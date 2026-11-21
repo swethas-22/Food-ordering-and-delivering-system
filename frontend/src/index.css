@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   PARCELO BESPOKE MULTI-THEME DESIGN SYSTEM (SRS Section 4.1.4)
+   ========================================================================== */
+:root, [data-theme="midnight"] {
+  --bg-primary: #0F0F0F;
+  --bg-secondary: #161616;
+  --bg-card: #1C1C1C;
+  --bg-elevated: #262626;
+  --text-primary: #F8F5EE;
+  --text-secondary: #A69F92;
+  --accent-primary: #D4AF37;
+  --accent-hover: #E5C354;
+  --accent-contrast: #0F0F0F;
+  --border-subtle: rgba(212, 175, 55, 0.22);
+  --glass-bg: rgba(18, 18, 18, 0.88);
+  --header-text: #F8F5EE;
+  --shadow-luxury: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
+  --map-land: #171717;
+  --map-road: #2B2B2B;
+  --map-park: #1A241E;
+}
+
+[data-theme="royal"] {
+  --bg-primary: #102542;
+  --bg-secondary: #173256;
+  --bg-card: #FFFFF0;
+  --bg-elevated: #F3F2E1;
+  --text-primary: #102542;
+  --text-secondary: #4D607D;
+  --accent-primary: #D4AF37;
+  --accent-hover: #E4C14F;
+  --accent-contrast: #102542;
+  --border-subtle: rgba(212, 175, 55, 0.28);
+  --glass-bg: rgba(16, 37, 66, 0.92);
+  --header-text: #FFFFF0;
+  --shadow-luxury: 0 18px 36px -14px rgba(16, 37, 66, 0.25);
+  --map-land: #F3F2E0;
+  --map-road: #DCE2EC;
+  --map-park: #E2EFE6;
+}
+
+[data-theme="velvet"] {
+  --bg-primary: #F5F5DC;
+  --bg-secondary: #ECEBD0;
+  --bg-card: #FAF9EC;
+  --bg-elevated: #E4E2C3;
+  --text-primary: #2B1115;
+  --text-secondary: #6B474D;
+  --accent-primary: #4A0E17;
+  --accent-hover: #681421;
+  --accent-contrast: #F5F5DC;
+  --border-subtle: rgba(74, 14, 23, 0.2);
+  --glass-bg: rgba(74, 14, 23, 0.94);
+  --header-text: #FFFFF0;
+  --shadow-luxury: 0 18px 36px -14px rgba(74, 14, 23, 0.18);
+  --map-land: #EFEED3;
+  --map-road: #DDD5CE;
+  --map-park: #E1E8D5;
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .font-serif-brand {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Luxury theme utility classes */
+.theme-bg-primary { background-color: var(--bg-primary); }
+.theme-bg-secondary { background-color: var(--bg-secondary); }
+.theme-bg-card { background-color: var(--bg-card); }
+.theme-bg-elevated { background-color: var(--bg-elevated); }
+.theme-text-primary { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-header-text { color: var(--header-text); }
+.theme-accent-bg { background-color: var(--accent-primary); color: var(--accent-contrast); }
+.theme-accent-bg:hover { background-color: var(--accent-hover); }
+.theme-accent-text { color: var(--accent-primary); }
+.theme-border { border-color: var(--border-subtle); }
+.theme-shadow { box-shadow: var(--shadow-luxury); }
+.theme-glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Card hover animation */
+.hover-zoom-card {
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease;
+}
+.hover-zoom-card:hover {
+  transform: translateY(-4px);
+}
+.zoom-img {
+  transition: transform 0.4s ease;
+}
+.hover-zoom-card:hover .zoom-img {
+  transform: scale(1.05);
+}
+
+/* Soundwave keyframe animations for voice interfaces */
+@keyframes waveAnim {
+  0%, 100% { height: 8px; }
+  50% { height: 38px; }
+}
+
+.soundwave-bar {
+  animation: waveAnim 1.2s ease-in-out infinite;
+  background-color: var(--accent-primary);
+}
+.soundwave-bar:nth-child(2) { animation-delay: 0.15s; }
+.soundwave-bar:nth-child(3) { animation-delay: 0.3s; }
+.soundwave-bar:nth-child(4) { animation-delay: 0.45s; }
+.soundwave-bar:nth-child(5) { animation-delay: 0.2s; }
+.soundwave-bar:nth-child(6) { animation-delay: 0.35s; }
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}

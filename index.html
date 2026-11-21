@@ -1,0 +1,3686 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcelo — Bespoke Culinary Delivery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ==========================================================================
+       PARCELO LUXURY MULTI-THEME DESIGN SYSTEM
+       ========================================================================== */
+    :root,
+    [data-theme="midnight"] {
+      --bg-primary: #0F0F0F;
+      --bg-secondary: #161616;
+      --bg-card: #1C1C1C;
+      --bg-elevated: #262626;
+      --text-primary: #F8F5EE;
+      --text-secondary: #A69F92;
+      --accent-primary: #D4AF37;
+      --accent-hover: #E5C354;
+      --accent-contrast: #0F0F0F;
+      --border-subtle: rgba(212, 175, 55, 0.22);
+      --glass-bg: rgba(18, 18, 18, 0.88);
+      --shadow-luxury: 0 20px 45px -15px rgba(0, 0, 0, 0.8);
+      --map-land: #171717;
+      --map-road: #2B2B2B;
+      --map-park: #1A241E;
+    }
+
+    [data-theme="royal"] {
+      --bg-primary: #FFFFF0;
+      --bg-secondary: #F5F4E2;
+      --bg-card: #FFFFFF;
+      --bg-elevated: #ECEAD7;
+      --text-primary: #102542;
+      --text-secondary: #4D607D;
+      --accent-primary: #102542;
+      --accent-hover: #1A3A68;
+      --accent-contrast: #FFFFF0;
+      --border-subtle: rgba(16, 37, 66, 0.16);
+      --glass-bg: rgba(255, 255, 240, 0.90);
+      --shadow-luxury: 0 18px 36px -14px rgba(16, 37, 66, 0.14);
+      --map-land: #F3F2E0;
+      --map-road: #DCE2EC;
+      --map-park: #E2EFE6;
+    }
+
+    [data-theme="velvet"] {
+      --bg-primary: #F5F5DC;
+      --bg-secondary: #ECEBD0;
+      --bg-card: #FAF9EC;
+      --bg-elevated: #E4E2C3;
+      --text-primary: #2B1115;
+      --text-secondary: #6B474D;
+      --accent-primary: #4A0E17;
+      --accent-hover: #681421;
+      --accent-contrast: #F5F5DC;
+      --border-subtle: rgba(74, 14, 23, 0.18);
+      --glass-bg: rgba(245, 245, 220, 0.90);
+      --shadow-luxury: 0 18px 36px -14px rgba(74, 14, 23, 0.16);
+      --map-land: #EFEED3;
+      --map-road: #DDD5CE;
+      --map-park: #E1E8D5;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    .font-serif-brand {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .theme-bg-primary {
+      background-color: var(--bg-primary);
+    }
+
+    .theme-bg-secondary {
+      background-color: var(--bg-secondary);
+    }
+
+    .theme-bg-card {
+      background-color: var(--bg-card);
+    }
+
+    .theme-bg-elevated {
+      background-color: var(--bg-elevated);
+    }
+
+    .theme-text-primary {
+      color: var(--text-primary);
+    }
+
+    .theme-text-secondary {
+      color: var(--text-secondary);
+    }
+
+    .theme-accent-bg {
+      background-color: var(--accent-primary);
+      color: var(--accent-contrast);
+    }
+
+    .theme-accent-bg:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .theme-accent-text {
+      color: var(--accent-primary);
+    }
+
+    .theme-border {
+      border-color: var(--border-subtle);
+    }
+
+    .theme-glass {
+      background-color: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .theme-shadow {
+      box-shadow: var(--shadow-luxury);
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-primary);
+      border-radius: 999px;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Soundwave Animations */
+    @keyframes wavePulse {
+
+      0%,
+      100% {
+        transform: scaleY(0.3);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+    }
+
+    .wave-bar {
+      animation: wavePulse 0.95s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .wave-bar:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .wave-bar:nth-child(3) {
+      animation-delay: 0.24s;
+    }
+
+    .wave-bar:nth-child(4) {
+      animation-delay: 0.36s;
+    }
+
+    .wave-bar:nth-child(5) {
+      animation-delay: 0.48s;
+    }
+
+    .wave-bar:nth-child(6) {
+      animation-delay: 0.2s;
+    }
+
+    .wave-bar:nth-child(7) {
+      animation-delay: 0.08s;
+    }
+
+    .wave-bar:nth-child(8) {
+      animation-delay: 0.32s;
+    }
+
+    .wave-bar:nth-child(9) {
+      animation-delay: 0.16s;
+    }
+
+    @keyframes pulseRing {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.75;
+      }
+
+      75% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .pulse-ring {
+      animation: pulseRing 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+
+    /* Route dash animation for live map */
+    @keyframes dashMove {
+      to {
+        stroke-dashoffset: -40;
+      }
+    }
+
+    .route-dash {
+      animation: dashMove 1.4s linear infinite;
+    }
+
+    /* Card Image Hover */
+    .hover-zoom-card:hover .zoom-img {
+      transform: scale(1.06);
+    }
+
+    .zoom-img {
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- ========================================================================
+       TOAST NOTIFICATION CONTAINER
+       ======================================================================== -->
+  <div id="toast-container" class="fixed top-20 right-4 z-[110] flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ========================================================================
+       TOP NAVIGATION HEADER (Sticky, Responsive, Multi-Theme + View Switcher)
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 theme-glass border-b theme-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
+
+      <!-- Left: Brand + Location Selector -->
+      <div class="flex items-center gap-3 sm:gap-5 min-w-0">
+        <button onclick="navigateTo('home')" class="flex items-center gap-2.5 text-left shrink-0 cursor-pointer">
+          <div class="w-10 h-10 rounded-xl theme-accent-bg flex items-center justify-center shadow-md">
+            <i class="fa-solid fa-crown text-base"></i>
+          </div>
+          <div>
+            <span
+              class="font-serif-brand text-2xl sm:text-3xl font-bold tracking-tight leading-none block">Parcelo</span>
+            <span class="text-[9px] uppercase tracking-[0.24em] theme-text-secondary font-semibold block">Haute
+              Delivery</span>
+          </div>
+        </button>
+
+        <!-- Location Selector Dropdown -->
+        <div class="relative hidden sm:block" id="location-dropdown-wrapper">
+          <button onclick="toggleLocationDropdown()"
+            class="flex items-center gap-2 px-3 py-2 rounded-xl theme-bg-card border theme-border hover:opacity-90 text-left max-w-[215px] cursor-pointer">
+            <i class="fa-solid fa-location-dot theme-accent-text text-sm shrink-0"></i>
+            <div class="min-w-0">
+              <span class="text-[10px] uppercase tracking-wider theme-text-secondary block leading-none">Deliver
+                to</span>
+              <span id="active-location-label" class="text-xs font-bold truncate block mt-0.5">Koramangala 4th
+                Block</span>
+            </div>
+            <i class="fa-solid fa-chevron-down text-[10px] theme-text-secondary ml-1"></i>
+          </button>
+
+          <div id="location-dropdown-menu"
+            class="hidden absolute left-0 mt-2 w-72 rounded-2xl theme-bg-card border theme-border theme-shadow p-3 z-50">
+            <p class="text-[11px] font-bold uppercase tracking-wider theme-text-secondary px-2 mb-2">Select Delivery
+              Address</p>
+            <div id="location-options-list" class="space-y-1">
+              <!-- Populated by JS -->
+            </div>
+            <button onclick="openAddAddressPrompt()"
+              class="w-full mt-2 pt-2 border-t theme-border text-xs font-bold theme-accent-text flex items-center justify-center gap-1.5 py-1.5 hover:opacity-80 cursor-pointer">
+              <i class="fa-solid fa-plus"></i> Add New Delivery Address
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Screen Switcher Pills (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-1 p-1 rounded-2xl theme-bg-secondary border theme-border"
+        aria-label="Main Views">
+        <button onclick="navigateTo('home')" data-nav="home"
+          class="nav-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">
+          Discover
+        </button>
+        <button onclick="navigateTo('restaurants')" data-nav="restaurants"
+          class="nav-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">
+          Restaurants
+        </button>
+        <button onclick="openRestaurantMenu(1)" data-nav="menu"
+          class="nav-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">
+          Menu & Custom
+        </button>
+        <button onclick="navigateTo('tracking')" data-nav="tracking"
+          class="nav-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live Track
+        </button>
+        <button onclick="openAiModal()"
+          class="px-3.5 py-1.5 rounded-xl text-xs font-semibold theme-accent-text hover:opacity-80 flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Parcelo AI
+        </button>
+      </nav>
+
+      <!-- Right: 3-Theme Switcher, Cart & Profile/Auth -->
+      <div class="flex items-center gap-2">
+        <!-- 3 Luxury Themes -->
+        <div class="flex items-center gap-1 p-1 rounded-xl theme-bg-secondary border theme-border"
+          title="Switch Luxury Palette">
+          <button onclick="setTheme('midnight')" id="theme-btn-midnight"
+            class="theme-switch-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer"
+            title="Midnight Luxe (Black & Gold)">
+            <span class="w-3 h-3 rounded-full bg-[#0F0F0F] border-2 border-[#D4AF37]"></span>
+            <span class="hidden xl:inline">Black & Gold</span>
+          </button>
+          <button onclick="setTheme('royal')" id="theme-btn-royal"
+            class="theme-switch-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer"
+            title="Royal Coastal (Blue & Ivory)">
+            <span class="w-3 h-3 rounded-full bg-[#102542] border-2 border-[#FFFFF0]"></span>
+            <span class="hidden xl:inline">Blue & Ivory</span>
+          </button>
+          <button onclick="setTheme('velvet')" id="theme-btn-velvet"
+            class="theme-switch-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold cursor-pointer"
+            title="Velvet Heritage (Burgundy & Beige)">
+            <span class="w-3 h-3 rounded-full bg-[#4A0E17] border-2 border-[#F5F5DC]"></span>
+            <span class="hidden xl:inline">Burgundy</span>
+          </button>
+        </div>
+
+        <!-- Cart Button -->
+        <button onclick="openCartDrawer()"
+          class="relative flex items-center gap-2 px-3 py-2 rounded-xl theme-bg-card border theme-border hover:opacity-90 text-xs font-bold cursor-pointer">
+          <i class="fa-solid fa-bag-shopping theme-accent-text text-sm"></i>
+          <span id="header-cart-count" class="px-1.5 py-0.5 text-[10px] font-bold rounded-full theme-accent-bg">2</span>
+        </button>
+
+        <!-- Profile / Sign In -->
+        <button onclick="navigateTo('profile')"
+          class="flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-xl theme-bg-card border theme-border hover:opacity-90 text-xs font-semibold cursor-pointer"
+          title="Profile, Orders & Settings">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+            alt="Aarav" onerror="this.src='https://placehold.co/80x80/1C1C1C/D4AF37?text=AM'"
+            class="w-7 h-7 rounded-lg object-cover" />
+          <span id="header-user-name" class="hidden md:inline max-w-[75px] truncate">Aarav</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Secondary Nav Bar -->
+    <div
+      class="lg:hidden flex items-center justify-around py-2 px-2 border-t theme-border theme-bg-secondary text-[11px] font-semibold">
+      <button onclick="navigateTo('home')" data-nav="home" class="nav-pill px-3 py-1 rounded-lg">Discover</button>
+      <button onclick="navigateTo('restaurants')" data-nav="restaurants"
+        class="nav-pill px-3 py-1 rounded-lg">Restaurants</button>
+      <button onclick="openRestaurantMenu(1)" data-nav="menu" class="nav-pill px-3 py-1 rounded-lg">Menu</button>
+      <button onclick="navigateTo('tracking')" data-nav="tracking" class="nav-pill px-3 py-1 rounded-lg">Live
+        Track</button>
+      <button onclick="navigateTo('profile')" data-nav="profile" class="nav-pill px-3 py-1 rounded-lg">Profile</button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SCREEN 1: HOME & FOOD DISCOVERY DASHBOARD
+       ======================================================================== -->
+  <section id="view-home" class="app-view flex-1">
+
+    <!-- Personalized Greeting, Search Bar (Voice + History) & Hero Banner -->
+    <div class="theme-bg-secondary border-b theme-border pt-7 pb-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+
+        <!-- Greeting & Auth Quick Trigger -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] theme-accent-text font-bold mb-1">Parcelo Privé • Bengaluru</p>
+            <h1 id="home-greeting-title" class="font-serif-brand text-3xl sm:text-4xl font-bold">
+              Good Evening, <span class="italic">Aarav</span>
+            </h1>
+            <p class="text-xs sm:text-sm theme-text-secondary mt-0.5">What extraordinary flavors are we delivering to
+              Koramangala tonight?</p>
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <button onclick="openAuthModal()"
+              class="px-4 py-2.5 rounded-xl theme-bg-card border theme-border text-xs font-semibold hover:opacity-90 flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-shield-halved theme-accent-text"></i>
+              <span id="auth-status-pill">Member Signed In • Switch Account</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Prominent Search Bar with Voice Search & Recent Search History Dropdown -->
+        <div class="relative max-w-3xl mb-8" id="home-search-wrapper">
+          <div class="flex items-center theme-bg-card border-2 theme-border rounded-2xl px-4 py-3 theme-shadow">
+            <i class="fa-solid fa-magnifying-glass theme-accent-text text-base mr-3"></i>
+            <input type="text" id="home-search-input" autocomplete="off"
+              placeholder="Search for Hyderabadi Biryani, Truffle Risotto, Sushi, or Restaurants..."
+              class="w-full bg-transparent outline-none text-sm theme-text-primary placeholder:opacity-55"
+              onfocus="showHomeSearchHistory()" oninput="handleHomeSearchInput(this.value)" />
+            <button id="home-clear-search" onclick="clearHomeSearch()"
+              class="hidden p-1.5 theme-text-secondary hover:opacity-80 cursor-pointer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="h-6 w-[1px] theme-border border-r mx-2.5"></div>
+            <button onclick="openVoiceSearchModal()"
+              class="flex items-center gap-2 px-3.5 py-2 rounded-xl theme-accent-bg text-xs font-bold shrink-0 cursor-pointer"
+              title="Voice Search">
+              <i class="fa-solid fa-microphone"></i>
+              <span class="hidden sm:inline">Voice Search</span>
+            </button>
+          </div>
+
+          <!-- Search History Dropdown -->
+          <div id="home-search-history-dropdown"
+            class="hidden absolute left-0 right-0 mt-2 rounded-2xl theme-bg-card border theme-border theme-shadow p-4 z-30">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-xs font-bold uppercase tracking-wider theme-text-secondary flex items-center gap-1.5">
+                <i class="fa-solid fa-clock-rotate-left theme-accent-text"></i> Recent Search History
+              </span>
+              <button onclick="clearSearchHistory()"
+                class="text-xs theme-accent-text font-semibold hover:underline cursor-pointer">
+                Clear History
+              </button>
+            </div>
+            <div id="home-search-history-chips" class="flex flex-wrap gap-2">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Promotional Hero Banners Carousel -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <!-- Primary Featured Banner -->
+          <div
+            class="lg:col-span-2 relative rounded-3xl overflow-hidden h-64 sm:h-72 theme-shadow border theme-border group">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+              alt="Royal Feast"
+              onerror="this.src='https://placehold.co/1200x500/1C1C1C/D4AF37?text=Parcelo+Royal+Feast'"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent flex flex-col justify-center p-6 sm:p-9 text-white">
+              <span
+                class="inline-block w-fit px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-400 text-black mb-3">
+                Privé Weekend Privilege
+              </span>
+              <h2 class="font-serif-brand text-3xl sm:text-4xl font-bold max-w-md leading-tight mb-2">
+                Flat 20% Off Artisanal Tasting Menus
+              </h2>
+              <p class="text-xs sm:text-sm text-neutral-200 max-w-sm mb-5">
+                Experience Michelin-inspired Indian, Italian & Japanese kitchens delivered in temperature-sealed boxes.
+              </p>
+              <div class="flex flex-wrap items-center gap-3">
+                <button onclick="openRestaurantMenu(1)"
+                  class="px-5 py-2.5 rounded-xl bg-amber-400 text-black font-bold text-xs sm:text-sm hover:bg-amber-300 cursor-pointer">
+                  Order Now
+                </button>
+                <button onclick="copyPromoCode('PARCELO20')"
+                  class="px-4 py-2.5 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 text-xs font-semibold hover:bg-white/25 cursor-pointer">
+                  <i class="fa-regular fa-copy mr-1.5"></i>Code: <strong>PARCELO20</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Offer Card -->
+          <div class="relative rounded-3xl overflow-hidden h-64 sm:h-72 theme-shadow border theme-border group">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80"
+              alt="Dum Biryani" onerror="this.src='https://placehold.co/800x500/1C1C1C/D4AF37?text=Royal+Biryani'"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent flex flex-col justify-end p-6 text-white">
+              <span class="text-[11px] font-bold uppercase tracking-widest text-amber-300 mb-1">Zero Delivery Fee</span>
+              <h3 class="font-serif-brand text-2xl font-bold mb-1.5">The Royal Dum Handi Festival</h3>
+              <p class="text-xs text-neutral-300 mb-4">Complimentary saffron phirni on orders above ₹599.</p>
+              <button onclick="copyPromoCode('FEAST150')"
+                class="w-full py-2.5 rounded-xl bg-white/15 backdrop-blur-md border border-white/30 text-xs font-bold hover:bg-white/25 cursor-pointer">
+                Apply Code: FEAST150 (₹150 Off)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Discovery Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-9 space-y-12">
+
+      <!-- Horizontal Cuisine Categories -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-serif-brand text-2xl sm:text-3xl font-bold">Explore World Cuisines</h2>
+          <button onclick="navigateTo('restaurants')"
+            class="text-xs font-bold theme-accent-text hover:underline cursor-pointer">
+            View All Restaurants <i class="fa-solid fa-arrow-right ml-1"></i>
+          </button>
+        </div>
+        <div id="home-cuisine-strip" class="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Popular Restaurants -->
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="font-serif-brand text-2xl sm:text-3xl font-bold">Popular & Best-Rated Restaurants</h2>
+            <p class="text-xs theme-text-secondary mt-0.5">Handpicked flagship kitchens with 4.7★+ guest acclaim</p>
+          </div>
+          <button onclick="navigateTo('restaurants')"
+            class="px-4 py-2 rounded-xl theme-bg-card border theme-border text-xs font-bold hover:opacity-85 cursor-pointer">
+            Filter & Sort All
+          </button>
+        </div>
+        <div id="home-restaurants-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Recommended Dishes & Chef Specials -->
+      <div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest theme-accent-text font-bold">Curated For Your
+              Palate</span>
+            <h2 class="font-serif-brand text-2xl sm:text-3xl font-bold">Recommended & Trending Chef Specials</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="filterHomeDishes('all')" id="home-dish-tab-all"
+              class="px-3.5 py-1.5 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">All Picks</button>
+            <button onclick="filterHomeDishes('trending')" id="home-dish-tab-trending"
+              class="px-3.5 py-1.5 rounded-xl theme-bg-card border theme-border text-xs font-bold cursor-pointer">Trending</button>
+            <button onclick="filterHomeDishes('special')" id="home-dish-tab-special"
+              class="px-3.5 py-1.5 rounded-xl theme-bg-card border theme-border text-xs font-bold cursor-pointer">Chef
+              Specials</button>
+          </div>
+        </div>
+        <div id="home-dishes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Special Offers & Discounts Strip -->
+      <div class="rounded-3xl theme-bg-card border theme-border p-6 sm:p-8 theme-shadow">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 class="font-serif-brand text-2xl sm:text-3xl font-bold">Exclusive Dining Privileges & Bank Offers</h3>
+            <p class="text-xs theme-text-secondary mt-1">Tap any offer code to copy and apply automatically at checkout
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div onclick="copyPromoCode('PARCELO20')"
+            class="p-4 rounded-2xl theme-bg-secondary border theme-border flex items-center gap-3.5 cursor-pointer hover:opacity-90">
+            <div class="w-12 h-12 rounded-xl theme-accent-bg flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-percent"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold theme-accent-text block">PARCELO20</span>
+              <p class="text-sm font-bold">20% Off Up to ₹300</p>
+              <span class="text-[11px] theme-text-secondary">Valid on all global cuisines</span>
+            </div>
+          </div>
+          <div onclick="copyPromoCode('FEAST150')"
+            class="p-4 rounded-2xl theme-bg-secondary border theme-border flex items-center gap-3.5 cursor-pointer hover:opacity-90">
+            <div class="w-12 h-12 rounded-xl theme-accent-bg flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold theme-accent-text block">FEAST150</span>
+              <p class="text-sm font-bold">Flat ₹150 Instant Cashback</p>
+              <span class="text-[11px] theme-text-secondary">Orders above ₹699</span>
+            </div>
+          </div>
+          <div onclick="copyPromoCode('PRIVEFREE')"
+            class="p-4 rounded-2xl theme-bg-secondary border theme-border flex items-center gap-3.5 cursor-pointer hover:opacity-90">
+            <div class="w-12 h-12 rounded-xl theme-accent-bg flex items-center justify-center text-lg shrink-0">
+              <i class="fa-solid fa-motorcycle"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold theme-accent-text block">PRIVEFREE</span>
+              <p class="text-sm font-bold">Zero White-Glove Delivery</p>
+              <span class="text-[11px] theme-text-secondary">Complimentary priority valet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 2: RESTAURANT DISCOVERY & LISTING SCREEN
+       ======================================================================== -->
+  <section id="view-restaurants" class="hidden app-view flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-xs uppercase tracking-[0.2em] theme-accent-text font-bold">Curated Kitchens</span>
+        <h1 class="font-serif-brand text-3xl sm:text-4xl font-bold mt-1">All Partner Restaurants</h1>
+      </div>
+
+      <!-- Search within restaurants -->
+      <div class="flex items-center theme-bg-card border theme-border rounded-xl px-3.5 py-2.5 w-full md:w-80">
+        <i class="fa-solid fa-magnifying-glass theme-accent-text text-xs mr-2.5"></i>
+        <input type="text" id="rest-search-input" placeholder="Search restaurant or cuisine..."
+          oninput="renderRestaurantListing()" class="bg-transparent outline-none text-xs w-full theme-text-primary" />
+      </div>
+    </div>
+
+    <!-- Comprehensive Filter & Sort Bar -->
+    <div
+      class="p-4 rounded-2xl theme-bg-card border theme-border mb-7 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- Veg Only Toggle -->
+        <button onclick="toggleRestFilter('veg')" id="rest-filter-veg"
+          class="px-3 py-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold flex items-center gap-1.5 cursor-pointer">
+          <span class="w-3 h-3 border border-emerald-500 flex items-center justify-center rounded-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          </span>
+          Pure Veg
+        </button>
+
+        <!-- Rating 4.5+ Toggle -->
+        <button onclick="toggleRestFilter('rating')" id="rest-filter-rating"
+          class="px-3 py-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-star text-amber-400 text-[11px]"></i> Rating 4.7+
+        </button>
+
+        <!-- Price Tier Filter -->
+        <select id="rest-filter-price" onchange="renderRestaurantListing()"
+          class="px-3 py-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold outline-none cursor-pointer">
+          <option value="all">All Price Tiers</option>
+          <option value="budget">Under ₹300 Min</option>
+          <option value="mid">₹300 – ₹500</option>
+          <option value="luxury">Luxury Dining (₹500+)</option>
+        </select>
+
+        <!-- Cuisine Filter -->
+        <select id="rest-filter-cuisine" onchange="renderRestaurantListing()"
+          class="px-3 py-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold outline-none cursor-pointer">
+          <option value="All">All Cuisines</option>
+          <option value="Indian">Indian</option>
+          <option value="Italian">Italian</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Lebanese">Lebanese</option>
+          <option value="Continental">Continental</option>
+        </select>
+      </div>
+
+      <!-- Sort By Dropdown -->
+      <div class="flex items-center gap-2">
+        <span class="text-xs theme-text-secondary">Sort by:</span>
+        <select id="rest-sort-select" onchange="renderRestaurantListing()"
+          class="px-3.5 py-2 rounded-xl theme-accent-bg text-xs font-bold outline-none cursor-pointer">
+          <option value="popularity">Popularity</option>
+          <option value="rating">Highest Rating</option>
+          <option value="deliveryTime">Fastest Delivery</option>
+          <option value="priceLow">Min Order: Low to High</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Restaurant Listing Grid -->
+    <div id="restaurant-listing-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 3: RESTAURANT MENU & CUSTOMIZATION SCREEN
+       ======================================================================== -->
+  <section id="view-menu" class="hidden app-view flex-1 pb-28">
+
+    <!-- Top Restaurant Cover Banner -->
+    <div class="relative h-64 sm:h-80 w-full bg-neutral-900">
+      <img id="menu-rest-cover"
+        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80"
+        alt="Restaurant Cover" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/40"></div>
+
+      <!-- Top Floating Back & Share Buttons -->
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 flex items-center justify-between relative z-10">
+        <button onclick="navigateTo('restaurants')"
+          class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-black/80 cursor-pointer"
+          title="Back to Restaurants">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <div class="flex items-center gap-2.5">
+          <button onclick="toggleFavoriteRestaurant(state.activeRestaurantId)" id="menu-fav-btn"
+            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-black/80 cursor-pointer"
+            title="Save to Favorites">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <button onclick="shareRestaurant()"
+            class="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-black/80 cursor-pointer"
+            title="Share Restaurant">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlapping Luxury Restaurant Info Card -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 -mt-20 relative z-20">
+      <div class="rounded-3xl theme-bg-card border theme-border p-6 sm:p-7 theme-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span id="menu-rest-badge"
+                class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider theme-accent-bg">
+                Parcelo Flagship
+              </span>
+              <span id="menu-rest-cuisines" class="text-xs theme-text-secondary font-medium">
+                North Indian • Mughlai • Kebabs
+              </span>
+            </div>
+            <h1 id="menu-rest-name" class="font-serif-brand text-3xl sm:text-4xl font-bold">
+              The Royal Saffron Room
+            </h1>
+            <p id="menu-rest-location" class="text-xs theme-text-secondary mt-1">
+              <i class="fa-solid fa-location-dot theme-accent-text mr-1"></i> Lavelle Road, Bengaluru • 2.4 km away
+            </p>
+          </div>
+
+          <!-- Rating Box -->
+          <div
+            class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 p-3 rounded-2xl theme-bg-secondary border theme-border shrink-0">
+            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-600 text-white text-sm font-bold">
+              <span id="menu-rest-rating">4.9</span>
+              <i class="fa-solid fa-star text-xs"></i>
+            </div>
+            <span id="menu-rest-reviews" class="text-[11px] theme-text-secondary font-medium">1,420+ Verified
+              Reviews</span>
+          </div>
+        </div>
+
+        <!-- Delivery Time, Fee & Min Order Metrics -->
+        <div class="grid grid-cols-3 gap-3 mt-5 pt-5 border-t theme-border text-center sm:text-left">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-xl theme-bg-secondary flex items-center justify-center theme-accent-text mx-auto sm:mx-0">
+              <i class="fa-regular fa-clock text-xs"></i>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase tracking-wider theme-text-secondary block">Delivery Time</span>
+              <span id="menu-rest-time" class="text-xs sm:text-sm font-bold">25–30 mins</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-xl theme-bg-secondary flex items-center justify-center theme-accent-text mx-auto sm:mx-0">
+              <i class="fa-solid fa-motorcycle text-xs"></i>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase tracking-wider theme-text-secondary block">Delivery Fee</span>
+              <span id="menu-rest-fee" class="text-xs sm:text-sm font-bold">₹30 (Free ₹599+)</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <div
+              class="w-8 h-8 rounded-xl theme-bg-secondary flex items-center justify-center theme-accent-text mx-auto sm:mx-0">
+              <i class="fa-solid fa-bag-shopping text-xs"></i>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase tracking-wider theme-text-secondary block">Min Order</span>
+              <span id="menu-rest-min" class="text-xs sm:text-sm font-bold">₹249</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Search-in-Menu & Veg/Non-Veg Switch -->
+      <div
+        class="sticky top-20 z-30 mt-6 py-3 theme-glass rounded-2xl px-4 border theme-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div class="flex items-center theme-bg-card border theme-border rounded-xl px-3.5 py-2 flex-1">
+          <i class="fa-solid fa-magnifying-glass theme-accent-text text-xs mr-2.5"></i>
+          <input type="text" id="in-menu-search" placeholder="Search within this menu..."
+            oninput="renderRestaurantMenuItems()"
+            class="bg-transparent outline-none text-xs w-full theme-text-primary" />
+        </div>
+
+        <div class="flex items-center justify-between sm:justify-end gap-3">
+          <!-- Veg Toggle Switch -->
+          <label
+            class="flex items-center gap-2 cursor-pointer select-none px-3 py-1.5 rounded-xl theme-bg-card border theme-border">
+            <span class="w-3.5 h-3.5 border border-emerald-500 flex items-center justify-center rounded-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-semibold">Veg Only</span>
+            <input type="checkbox" id="menu-veg-switch" onchange="renderRestaurantMenuItems()" class="sr-only peer" />
+            <div class="w-9 h-5 bg-neutral-500/40 peer-checked:bg-emerald-500 rounded-full relative transition-colors">
+              <span
+                class="dot absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-4"></span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Menu Category Tabs -->
+      <div id="menu-category-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-4">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Menu Items List (With Square Thumbnail on Right & ADD + Counter) -->
+      <div id="restaurant-menu-items-list" class="space-y-4">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Floating Bottom Cart Bar ("2 Items | ₹450" + "View Cart") -->
+    <div id="floating-menu-cart-bar"
+      class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-2xl rounded-2xl theme-accent-bg px-5 py-3.5 theme-shadow flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-black/15 flex items-center justify-center text-base">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span id="floating-bar-summary" class="text-sm sm:text-base font-bold block leading-tight">2 Items |
+            ₹450</span>
+          <span class="text-[11px] opacity-85">Extra charges may apply • Instant checkout</span>
+        </div>
+      </div>
+
+      <button onclick="openCartDrawer()"
+        class="px-5 py-2.5 rounded-xl bg-black/20 hover:bg-black/30 font-bold text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+        <span>View Cart</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 4: SPLIT-SCREEN LIVE ORDER TRACKING (Top 60% Map, Bottom 40% Sheet)
+       ======================================================================== -->
+  <section id="view-tracking" class="hidden app-view flex-1 flex flex-col">
+
+    <!-- TOP 60%: Clean Minimal Vector Map with Route & Animated Scooter -->
+    <div class="relative w-full h-[54vh] min-h-[340px] overflow-hidden border-b theme-border"
+      style="background-color: var(--map-land);">
+
+      <!-- Custom SVG Vector City Map -->
+      <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+        <!-- Parks / Green Zones -->
+        <rect x="80" y="60" width="210" height="140" rx="28" fill="var(--map-park)" />
+        <rect x="680" y="270" width="230" height="160" rx="32" fill="var(--map-park)" />
+
+        <!-- City Street Grid -->
+        <g stroke="var(--map-road)" stroke-width="14" stroke-linecap="round" fill="none">
+          <path d="M 0 120 L 1000 120" />
+          <path d="M 0 260 L 1000 260" />
+          <path d="M 0 390 L 1000 390" />
+          <path d="M 220 0 L 220 500" />
+          <path d="M 500 0 L 500 500" />
+          <path d="M 780 0 L 780 500" />
+          <path d="M 140 500 L 420 0" stroke-width="10" />
+        </g>
+
+        <!-- Street Labels -->
+        <text x="240" y="112" fill="var(--text-secondary)" font-size="11" opacity="0.65"
+          font-family="Plus Jakarta Sans">LAVELLE ROAD</text>
+        <text x="520" y="252" fill="var(--text-secondary)" font-size="11" opacity="0.65"
+          font-family="Plus Jakarta Sans">MG BOULEVARD</text>
+        <text x="610" y="382" fill="var(--text-secondary)" font-size="11" opacity="0.65"
+          font-family="Plus Jakarta Sans">KORAMANGALA 4TH BLOCK</text>
+
+        <!-- Base Route Shadow -->
+        <path id="delivery-route-bg" d="M 220 140 L 220 260 L 500 260 L 500 390 L 780 390" fill="none"
+          stroke="var(--accent-primary)" stroke-opacity="0.25" stroke-width="10" stroke-linecap="round"
+          stroke-linejoin="round" />
+
+        <!-- Animated Active Route Line -->
+        <path id="delivery-route-active" d="M 220 140 L 220 260 L 500 260 L 500 390 L 780 390" fill="none"
+          stroke="var(--accent-primary)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+          stroke-dasharray="12 8" class="route-dash" />
+
+        <!-- Restaurant Origin Pin (220, 140) -->
+        <g transform="translate(220, 140)">
+          <circle r="22" fill="var(--accent-primary)" fill-opacity="0.2" />
+          <circle r="13" fill="var(--accent-primary)" />
+          <text y="4" text-anchor="middle" fill="var(--accent-contrast)" font-size="11" font-weight="bold">R</text>
+          <rect x="-65" y="-42" width="130" height="22" rx="8" fill="var(--bg-card)" stroke="var(--border-subtle)" />
+          <text y="-27" text-anchor="middle" fill="var(--text-primary)" font-size="10" font-weight="bold">The Royal
+            Saffron</text>
+        </g>
+
+        <!-- Customer Home Destination Pin (780, 390) -->
+        <g transform="translate(780, 390)">
+          <circle r="24" fill="#10B981" fill-opacity="0.22" />
+          <circle r="13" fill="#10B981" />
+          <text y="4" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="bold">H</text>
+          <rect x="-62" y="18" width="124" height="22" rx="8" fill="var(--bg-card)" stroke="var(--border-subtle)" />
+          <text y="33" text-anchor="middle" fill="var(--text-primary)" font-size="10" font-weight="bold">Home •
+            Koramangala</text>
+        </g>
+
+        <!-- Moving Delivery Scooter Marker -->
+        <g id="scooter-marker" transform="translate(500, 260)">
+          <circle r="26" fill="var(--accent-primary)" fill-opacity="0.28" class="pulse-ring" />
+          <circle r="17" fill="var(--accent-primary)" stroke="var(--bg-card)" stroke-width="3" />
+          <text y="5" text-anchor="middle" fill="var(--accent-contrast)" font-size="13">🛵</text>
+        </g>
+      </svg>
+
+      <!-- Floating Top Map Controls -->
+      <div class="absolute top-4 left-4 right-4 max-w-4xl mx-auto flex items-center justify-between gap-2">
+        <button onclick="navigateTo('home')"
+          class="px-3.5 py-2 rounded-xl theme-bg-card border theme-border theme-shadow text-xs font-bold flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-arrow-left theme-accent-text"></i> Back to Home
+        </button>
+
+        <div class="flex items-center gap-2">
+          <button onclick="advanceTrackingStep()"
+            class="px-3.5 py-2 rounded-xl theme-accent-bg theme-shadow text-xs font-bold cursor-pointer"
+            title="Simulate next delivery milestone">
+            <i class="fa-solid fa-forward-step mr-1"></i> Simulate Next Stage
+          </button>
+          <button onclick="cancelActiveOrder()" id="cancel-order-btn"
+            class="px-3.5 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 cursor-pointer">
+            Cancel Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM 40%: Rounded Luxury Bottom Sheet -->
+    <div
+      class="flex-1 -mt-6 relative z-20 rounded-t-[32px] theme-bg-card border-t theme-border theme-shadow px-4 sm:px-8 py-6">
+      <div class="max-w-4xl mx-auto">
+        <!-- Sheet Drag Handle -->
+        <div class="w-12 h-1.5 rounded-full bg-neutral-400/40 mx-auto mb-5"></div>
+
+        <!-- Arrival ETA & Order ID Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+          <div>
+            <span id="tracking-order-id" class="text-[11px] uppercase tracking-widest theme-accent-text font-bold">
+              Order #PRC-9042 • Live GPS Active
+            </span>
+            <h2 id="tracking-eta-heading" class="font-serif-brand text-3xl sm:text-4xl font-bold">
+              Arriving in 18 mins
+            </h2>
+          </div>
+          <span id="tracking-status-pill" class="w-fit px-3.5 py-1.5 rounded-full theme-accent-bg text-xs font-bold">
+            Out for Delivery • Picked Up
+          </span>
+        </div>
+
+        <!-- 4-Step Horizontal Progress Bar (Confirmed, Preparing, Picked Up, Delivered) -->
+        <div class="mb-7">
+          <div class="grid grid-cols-4 gap-2 mb-2" id="tracking-steps-bars">
+            <!-- Populated by JS -->
+          </div>
+          <div class="grid grid-cols-4 gap-2 text-[11px] font-bold text-center" id="tracking-steps-labels">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Delivery Partner Card + Collapsible Order Summary -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Delivery Partner Profile -->
+          <div class="p-4 rounded-2xl theme-bg-secondary border theme-border flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+                alt="Rohan Sharma" onerror="this.src='https://placehold.co/100x100/1C1C1C/D4AF37?text=RS'"
+                class="w-12 h-12 rounded-2xl object-cover border theme-border" />
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h4 class="text-sm font-bold">Rohan Sharma</h4>
+                  <span class="px-1.5 py-0.5 rounded-md bg-emerald-600 text-white text-[10px] font-bold">4.9 ★</span>
+                </div>
+                <span class="text-[11px] theme-text-secondary block">Parcelo Privé Valet • KA-01-EQ-4821</span>
+                <span class="text-[10px] text-emerald-500 font-semibold">Vaccinated • Insulated Thermal Bag</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 shrink-0">
+              <button onclick="showToast('Calling Rohan Sharma (+91 98450 11223)...')"
+                class="w-10 h-10 rounded-xl theme-accent-bg flex items-center justify-center text-sm shadow-sm cursor-pointer"
+                title="Call Valet">
+                <i class="fa-solid fa-phone"></i>
+              </button>
+              <button onclick="showToast('Valet Chat: Rohan is 1.2 km away on MG Boulevard')"
+                class="w-10 h-10 rounded-xl theme-bg-card border theme-border flex items-center justify-center text-sm cursor-pointer"
+                title="Message Valet">
+                <i class="fa-regular fa-comment-dots theme-accent-text"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Order Summary -->
+          <div class="rounded-2xl theme-bg-secondary border theme-border overflow-hidden">
+            <button onclick="toggleTrackingSummary()"
+              class="w-full p-4 flex items-center justify-between text-left cursor-pointer">
+              <div>
+                <span class="text-xs font-bold block">Order Summary • The Royal Saffron Room</span>
+                <span id="tracking-items-brief" class="text-[11px] theme-text-secondary">2 Items • Total Paid ₹1,199
+                  (UPI)</span>
+              </div>
+              <i id="tracking-summary-chevron"
+                class="fa-solid fa-chevron-down text-xs theme-accent-text transition-transform"></i>
+            </button>
+            <div id="tracking-summary-details" class="hidden px-4 pb-4 pt-2 border-t theme-border text-xs space-y-1.5">
+              <div class="flex justify-between">
+                <span>1× Nizam's Saffron Hyderabadi Dum Biryani</span>
+                <span class="font-semibold">₹540</span>
+              </div>
+              <div class="flex justify-between">
+                <span>1× Black Truffle & Porcini Mushroom Risotto</span>
+                <span class="font-semibold">₹680</span>
+              </div>
+              <div class="flex justify-between theme-text-secondary pt-1 border-t theme-border">
+                <span>Grand Total (Incl. Taxes & White-Glove Delivery)</span>
+                <span class="font-bold theme-accent-text">₹1,199</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 5: USER PROFILE, SETTINGS & ORDER HISTORY DASHBOARD
+       ======================================================================== -->
+  <section id="view-profile" class="hidden app-view flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+      <!-- Profile Sidebar Card -->
+      <aside class="lg:col-span-1 space-y-4">
+        <div class="rounded-3xl theme-bg-card border theme-border p-6 text-center theme-shadow">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+            alt="Aarav Mehta" onerror="this.src='https://placehold.co/150x150/1C1C1C/D4AF37?text=AM'"
+            class="w-20 h-20 rounded-2xl object-cover mx-auto mb-3 border-2 theme-border" />
+          <h2 id="profile-card-name" class="font-serif-brand text-2xl font-bold">Aarav Mehta</h2>
+          <p id="profile-card-email" class="text-xs theme-text-secondary">aarav.mehta@parcelo.in</p>
+          <span
+            class="inline-block mt-2.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider theme-accent-bg">
+            Parcelo Privé Gold Member
+          </span>
+        </div>
+
+        <!-- Profile Tabs Navigation -->
+        <div class="rounded-3xl theme-bg-card border theme-border p-3 space-y-1">
+          <button onclick="switchProfileTab('orders')" data-ptab="orders"
+            class="profile-tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold theme-accent-bg flex items-center gap-2.5 cursor-pointer">
+            <i class="fa-solid fa-receipt w-4"></i> Order History & Reorder
+          </button>
+          <button onclick="switchProfileTab('details')" data-ptab="details"
+            class="profile-tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold hover:opacity-80 flex items-center gap-2.5 cursor-pointer">
+            <i class="fa-regular fa-user w-4"></i> Edit Profile & Addresses
+          </button>
+          <button onclick="switchProfileTab('favorites')" data-ptab="favorites"
+            class="profile-tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold hover:opacity-80 flex items-center gap-2.5 cursor-pointer">
+            <i class="fa-regular fa-heart w-4"></i> Saved Favorites
+          </button>
+          <button onclick="switchProfileTab('settings')" data-ptab="settings"
+            class="profile-tab-btn w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold hover:opacity-80 flex items-center gap-2.5 cursor-pointer">
+            <i class="fa-solid fa-sliders w-4"></i> Settings, Payments & Help
+          </button>
+          <button onclick="handleLogoutAction()"
+            class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold text-rose-500 hover:bg-rose-500/10 flex items-center gap-2.5 cursor-pointer">
+            <i class="fa-solid fa-right-from-bracket w-4"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <!-- Profile Right Content Area -->
+      <div class="lg:col-span-3 space-y-6">
+
+        <!-- TAB 1: ORDER HISTORY -->
+        <div id="profile-panel-orders" class="profile-panel space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-serif-brand text-3xl font-bold">Past Culinary Orders</h3>
+            <span class="text-xs theme-text-secondary">3 Completed Orders</span>
+          </div>
+          <div id="order-history-list" class="space-y-4">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- TAB 2: EDIT PROFILE & SAVED ADDRESSES -->
+        <div id="profile-panel-details" class="hidden profile-panel space-y-6">
+          <div class="rounded-3xl theme-bg-card border theme-border p-6">
+            <h3 class="font-serif-brand text-2xl font-bold mb-4">Personal Details</h3>
+            <form onsubmit="saveProfileChanges(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold mb-1">Full Name</label>
+                <input type="text" id="edit-profile-name" value="Aarav Mehta"
+                  class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1">Email Address</label>
+                <input type="email" id="edit-profile-email" value="aarav.mehta@parcelo.in"
+                  class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1">Phone Number</label>
+                <input type="tel" value="+91 98450 67890"
+                  class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1">Dietary Preference</label>
+                <select
+                  class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none">
+                  <option>All Cuisines (Veg & Non-Veg)</option>
+                  <option>Pure Vegetarian</option>
+                  <option>Eggetarian</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2">
+                <button type="submit" class="px-5 py-2.5 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+                  Save Profile Changes
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="rounded-3xl theme-bg-card border theme-border p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-serif-brand text-2xl font-bold">Saved Delivery Addresses</h3>
+              <button onclick="openAddAddressPrompt()"
+                class="px-3.5 py-2 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+                + Add Address
+              </button>
+            </div>
+            <div id="profile-addresses-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: FAVORITES -->
+        <div id="profile-panel-favorites" class="hidden profile-panel space-y-6">
+          <div class="rounded-3xl theme-bg-card border theme-border p-6">
+            <h3 class="font-serif-brand text-2xl font-bold mb-4">Favorite Restaurants & Dishes</h3>
+            <div id="profile-favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: SETTINGS, SAVED PAYMENTS & SUPPORT -->
+        <div id="profile-panel-settings" class="hidden profile-panel space-y-6">
+          <div class="rounded-3xl theme-bg-card border theme-border p-6 space-y-5">
+            <h3 class="font-serif-brand text-2xl font-bold">Luxury Theme & App Preferences</h3>
+
+            <!-- Theme Switcher Inside Settings -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button onclick="setTheme('midnight')"
+                class="p-4 rounded-2xl bg-[#0F0F0F] text-[#F8F5EE] border border-[#D4AF37] text-left cursor-pointer">
+                <span class="text-xs font-bold text-[#D4AF37] block">Midnight Luxe</span>
+                <span class="text-[11px] opacity-80">Matte Black & Brushed Gold</span>
+              </button>
+              <button onclick="setTheme('royal')"
+                class="p-4 rounded-2xl bg-[#FFFFF0] text-[#102542] border border-[#102542] text-left cursor-pointer">
+                <span class="text-xs font-bold text-[#102542] block">Royal Coastal</span>
+                <span class="text-[11px] opacity-80">Sapphire Blue & Warm Ivory</span>
+              </button>
+              <button onclick="setTheme('velvet')"
+                class="p-4 rounded-2xl bg-[#F5F5DC] text-[#4A0E17] border border-[#4A0E17] text-left cursor-pointer">
+                <span class="text-xs font-bold text-[#4A0E17] block">Velvet Heritage</span>
+                <span class="text-[11px] opacity-80">Rich Burgundy & Warm Beige</span>
+              </button>
+            </div>
+
+            <!-- Saved Payment Methods -->
+            <div class="pt-4 border-t theme-border">
+              <h4 class="text-sm font-bold mb-3">Saved Payment Methods</h4>
+              <div class="space-y-2 text-xs">
+                <div class="p-3 rounded-xl theme-bg-secondary border theme-border flex items-center justify-between">
+                  <span><i class="fa-solid fa-mobile-screen-button theme-accent-text mr-2"></i> <strong>UPI:</strong>
+                    aarav.mehta@okicici (Google Pay)</span>
+                  <span class="px-2 py-0.5 rounded theme-accent-bg text-[10px] font-bold">PRIMARY</span>
+                </div>
+                <div class="p-3 rounded-xl theme-bg-secondary border theme-border flex items-center justify-between">
+                  <span><i class="fa-regular fa-credit-card theme-accent-text mr-2"></i> <strong>HDFC Infinia
+                      Metal:</strong> •••• •••• •••• 8842</span>
+                  <span class="theme-text-secondary">Exp 09/29</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification Toggles -->
+            <div class="pt-4 border-t theme-border space-y-2.5 text-xs">
+              <h4 class="text-sm font-bold">Notifications & Concierge Support</h4>
+              <label class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary">
+                <span>Live SMS & WhatsApp Valet Tracking Updates</span>
+                <input type="checkbox" checked class="accent-amber-500" />
+              </label>
+              <label class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary">
+                <span>Chef's Seasonal Tasting Menu Invitations</span>
+                <input type="checkbox" checked class="accent-amber-500" />
+              </label>
+              <div class="pt-2 flex items-center justify-between">
+                <span class="theme-text-secondary">24/7 Privé Concierge Desk: <strong>1800-102-PARCELO</strong></span>
+                <button onclick="openAiModal()" class="px-3.5 py-2 rounded-xl theme-accent-bg font-bold cursor-pointer">
+                  Chat with Support AI
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FLOATING PARCELO AI CONCIERGE BUTTON
+       ======================================================================== -->
+  <button onclick="openAiModal()"
+    class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 pl-4 pr-5 py-3.5 rounded-full theme-accent-bg theme-shadow hover:scale-105 transition-transform cursor-pointer"
+    aria-label="Open Parcelo AI Food Assistant">
+    <span class="relative flex h-2.5 w-2.5">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-current"></span>
+    </span>
+    <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+    <span class="text-xs sm:text-sm font-bold">Parcelo AI</span>
+  </button>
+
+  <!-- ========================================================================
+       MODAL A: FOOD CUSTOMIZATION MODAL (Spice, Portion, Toppings, Add-ons)
+       ======================================================================== -->
+  <div id="customization-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5">
+    <div
+      class="w-full max-w-xl max-h-[90vh] rounded-3xl theme-bg-card border theme-border theme-shadow flex flex-col overflow-hidden">
+
+      <!-- Top Food Cover -->
+      <div class="relative h-48 sm:h-56 shrink-0 bg-neutral-900">
+        <img id="cust-dish-img" src="" alt="Dish" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <button onclick="closeCustomizationModal()"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/65 text-white flex items-center justify-center hover:bg-black/85 cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="absolute bottom-4 left-5 right-5 text-white">
+          <span id="cust-dish-tag"
+            class="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase bg-amber-400 text-black">Chef Special</span>
+          <h3 id="cust-dish-title" class="font-serif-brand text-2xl sm:text-3xl font-bold mt-1">Dish Name</h3>
+        </div>
+      </div>
+
+      <!-- Scrollable Customization Options -->
+      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5">
+        <p id="cust-dish-desc" class="text-xs theme-text-secondary leading-relaxed"></p>
+
+        <!-- 1. Portion Size -->
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider">Portion Size</span>
+            <span class="text-[10px] px-2 py-0.5 rounded theme-bg-secondary theme-accent-text font-bold">Required</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2.5" id="cust-portion-options">
+            <button type="button" onclick="selectCustPortion('Regular', 0)" data-portion="Regular"
+              class="cust-portion-btn p-3 rounded-xl theme-accent-bg text-xs font-bold text-left cursor-pointer">
+              <span class="block">Regular</span>
+              <span class="text-[10px] opacity-80">Base Price</span>
+            </button>
+            <button type="button" onclick="selectCustPortion('Large', 120)" data-portion="Large"
+              class="cust-portion-btn p-3 rounded-xl theme-bg-secondary border theme-border text-xs font-bold text-left cursor-pointer">
+              <span class="block">Large</span>
+              <span class="text-[10px] theme-text-secondary">+ ₹120</span>
+            </button>
+            <button type="button" onclick="selectCustPortion('Family Feast', 260)" data-portion="Family Feast"
+              class="cust-portion-btn p-3 rounded-xl theme-bg-secondary border theme-border text-xs font-bold text-left cursor-pointer">
+              <span class="block">Family Feast</span>
+              <span class="text-[10px] theme-text-secondary">+ ₹260</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Spice Level -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider block mb-2">Spice Profile</span>
+          <div class="grid grid-cols-4 gap-2" id="cust-spice-options">
+            <button type="button" onclick="selectCustSpice('Mild')" data-spice="Mild"
+              class="cust-spice-btn py-2 px-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">
+              🌿 Mild
+            </button>
+            <button type="button" onclick="selectCustSpice('Medium')" data-spice="Medium"
+              class="cust-spice-btn py-2 px-2 rounded-xl theme-accent-bg text-xs font-semibold cursor-pointer">
+              🌶️ Medium
+            </button>
+            <button type="button" onclick="selectCustSpice('Spicy')" data-spice="Spicy"
+              class="cust-spice-btn py-2 px-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">
+              🔥 Spicy
+            </button>
+            <button type="button" onclick="selectCustSpice('Fiery')" data-spice="Fiery"
+              class="cust-spice-btn py-2 px-2 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">
+              🌋 Fiery
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Extra Toppings & Artisanal Add-ons -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider block mb-2">Extra Toppings & Artisanal Add-ons</span>
+          <div class="space-y-2 text-xs">
+            <label
+              class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary border theme-border cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <input type="checkbox" value="Shaved Black Truffle|140" onchange="updateCustomizationTotal()"
+                  class="cust-addon-check accent-amber-500" />
+                <span>Shaved Umbrian Black Truffle</span>
+              </span>
+              <span class="font-bold theme-accent-text">+ ₹140</span>
+            </label>
+            <label
+              class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary border theme-border cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <input type="checkbox" value="Burrata & Aged Parmesan|95" onchange="updateCustomizationTotal()"
+                  class="cust-addon-check accent-amber-500" />
+                <span>Extra Creamy Burrata & Aged Parmesan</span>
+              </span>
+              <span class="font-bold theme-accent-text">+ ₹95</span>
+            </label>
+            <label
+              class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary border theme-border cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <input type="checkbox" value="Truffle Garlic Naan / Pita|65" onchange="updateCustomizationTotal()"
+                  class="cust-addon-check accent-amber-500" />
+                <span>Warm Truffle Garlic Naan / Za'atar Pita</span>
+              </span>
+              <span class="font-bold theme-accent-text">+ ₹65</span>
+            </label>
+            <label
+              class="flex items-center justify-between p-3 rounded-xl theme-bg-secondary border theme-border cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <input type="checkbox" value="Saffron Mint Raita & Dip|45" onchange="updateCustomizationTotal()"
+                  class="cust-addon-check accent-amber-500" />
+                <span>Roasted Garlic Toum & Saffron Mint Dip</span>
+              </span>
+              <span class="font-bold theme-accent-text">+ ₹45</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Special Chef Instructions -->
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wider block mb-1.5">Special Kitchen Instructions</label>
+          <textarea id="cust-instructions" rows="2" placeholder="e.g., Less oil, extra crispy, pack sauce separately..."
+            class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none resize-none"></textarea>
+        </div>
+      </div>
+
+      <!-- Sticky Bottom Quantity & Dynamic Price CTA -->
+      <div class="p-4 sm:p-5 border-t theme-border theme-bg-secondary flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2 p-1 rounded-xl theme-bg-card border theme-border">
+          <button type="button" onclick="changeCustQty(-1)"
+            class="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold cursor-pointer">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <span id="cust-qty-display" class="w-6 text-center text-sm font-bold">1</span>
+          <button type="button" onclick="changeCustQty(1)"
+            class="w-9 h-9 rounded-lg theme-accent-bg flex items-center justify-center text-xs font-bold cursor-pointer">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <button type="button" onclick="confirmCustomizedAddToCart()"
+          class="flex-1 py-3.5 px-5 rounded-xl theme-accent-bg text-xs sm:text-sm font-bold shadow-lg flex items-center justify-between cursor-pointer">
+          <span>Add to Cart</span>
+          <span id="cust-dynamic-total">₹540</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL B: SLIDE-OUT SHOPPING CART, CHECKOUT & ORDER SUCCESS ANIMATION
+       ======================================================================== -->
+  <div id="cart-drawer-backdrop" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex justify-end">
+    <div class="w-full max-w-lg h-full theme-bg-card border-l theme-border flex flex-col theme-shadow">
+
+      <!-- Drawer Header -->
+      <div class="p-5 border-b theme-border flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-bag-shopping theme-accent-text text-lg"></i>
+          <div>
+            <h3 id="cart-drawer-title" class="font-serif-brand text-2xl font-bold leading-none">Your Culinary Bag</h3>
+            <span id="cart-drawer-subtitle" class="text-[11px] theme-text-secondary">Estimated delivery in 28
+              mins</span>
+          </div>
+        </div>
+        <button onclick="closeCartDrawer()"
+          class="w-9 h-9 rounded-full theme-bg-elevated flex items-center justify-center theme-text-secondary hover:opacity-80 cursor-pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- VIEW 1: CART ITEMS & BILL BREAKDOWN -->
+      <div id="cart-step-items" class="flex-1 flex flex-col overflow-hidden">
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-3.5">
+          <!-- Populated by JS -->
+        </div>
+
+        <div id="cart-bill-footer" class="p-5 border-t theme-border theme-bg-secondary space-y-3.5">
+          <!-- Promo Input -->
+          <div class="flex gap-2">
+            <input type="text" id="cart-promo-input" placeholder="Promo code (PARCELO20 or FEAST150)"
+              class="flex-1 px-3.5 py-2 rounded-xl theme-bg-card border theme-border text-xs uppercase outline-none" />
+            <button onclick="applyCartPromo()"
+              class="px-4 py-2 rounded-xl theme-bg-elevated border theme-border text-xs font-bold hover:opacity-80 cursor-pointer">
+              Apply
+            </button>
+          </div>
+
+          <!-- Itemized Bill -->
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between theme-text-secondary">
+              <span>Item Subtotal</span>
+              <span id="bill-subtotal">₹0</span>
+            </div>
+            <div id="bill-discount-row" class="hidden flex justify-between text-emerald-500 font-bold">
+              <span id="bill-discount-label">Promo Discount</span>
+              <span id="bill-discount-val">-₹0</span>
+            </div>
+            <div class="flex justify-between theme-text-secondary">
+              <span>White-Glove Delivery Fee</span>
+              <span id="bill-delivery">₹30</span>
+            </div>
+            <div class="flex justify-between theme-text-secondary">
+              <span>GST & Artisanal Packaging (5%)</span>
+              <span id="bill-tax">₹0</span>
+            </div>
+            <div class="flex justify-between text-base font-bold pt-2 border-t theme-border">
+              <span>Grand Total</span>
+              <span id="bill-grand-total" class="theme-accent-text">₹0</span>
+            </div>
+          </div>
+
+          <button onclick="goToCheckoutStep()"
+            class="w-full py-3.5 rounded-xl theme-accent-bg text-sm font-bold shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+            <span>Proceed to Checkout</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 2: STREAMLINED CHECKOUT & MULTI-PAYMENT -->
+      <div id="cart-step-checkout" class="hidden flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 overflow-y-auto p-5 space-y-5">
+          <button onclick="backToCartStep()"
+            class="text-xs font-bold theme-accent-text flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Back to Bag
+          </button>
+
+          <!-- Delivery Address & Add New -->
+          <div class="p-4 rounded-2xl theme-bg-secondary border theme-border space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider theme-accent-text">
+                <i class="fa-solid fa-location-dot mr-1"></i> Delivery Address
+              </span>
+              <button type="button" onclick="toggleInlineNewAddress()"
+                class="text-[11px] font-bold theme-accent-text underline cursor-pointer">
+                + Add New Address
+              </button>
+            </div>
+            <select id="checkout-address-select"
+              class="w-full px-3 py-2 rounded-xl theme-bg-card border theme-border text-xs font-semibold outline-none">
+              <option>Home — Penthouse 14B, Koramangala 4th Block, Bengaluru</option>
+              <option>Work — Prestige Tech Tower, Indiranagar 100ft Rd, Bengaluru</option>
+            </select>
+
+            <!-- Inline Add New Address -->
+            <div id="inline-new-address-box" class="hidden pt-2 space-y-2">
+              <input type="text" id="new-addr-line" placeholder="Flat / Villa No., Street & Landmark"
+                class="w-full px-3 py-2 rounded-xl theme-bg-card border theme-border text-xs outline-none" />
+              <button type="button" onclick="saveInlineAddress()"
+                class="px-3.5 py-1.5 rounded-lg theme-accent-bg text-xs font-bold cursor-pointer">
+                Save & Select Address
+              </button>
+            </div>
+
+            <!-- Delivery Instructions Pills -->
+            <div class="pt-1">
+              <span class="text-[11px] theme-text-secondary block mb-1.5">Delivery Instructions:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" onclick="selectDeliveryNote(this)"
+                  class="del-note-chip px-2.5 py-1 rounded-lg theme-accent-bg text-[11px] font-semibold cursor-pointer">Leave
+                  at door</button>
+                <button type="button" onclick="selectDeliveryNote(this)"
+                  class="del-note-chip px-2.5 py-1 rounded-lg theme-bg-card border theme-border text-[11px] font-semibold cursor-pointer">Ring
+                  bell once</button>
+                <button type="button" onclick="selectDeliveryNote(this)"
+                  class="del-note-chip px-2.5 py-1 rounded-lg theme-bg-card border theme-border text-[11px] font-semibold cursor-pointer">Avoid
+                  calling</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div
+            class="p-3.5 rounded-2xl theme-bg-secondary border theme-border flex items-center justify-between text-xs">
+            <div>
+              <span class="theme-text-secondary block text-[11px]">Contact Recipient</span>
+              <strong>Aarav Mehta • +91 98450 67890</strong>
+            </div>
+            <span class="px-2 py-0.5 rounded theme-bg-card border theme-border text-[10px]">Verified</span>
+          </div>
+
+          <!-- Payment Methods -->
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider theme-text-secondary mb-2.5">Select Payment Method
+            </h4>
+            <div class="space-y-2.5">
+
+              <!-- UPI -->
+              <label
+                class="block p-3.5 rounded-2xl theme-bg-secondary border-2 theme-border cursor-pointer pay-method-card"
+                data-pay="upi">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="pay_opt" value="upi" checked onchange="switchPaymentMethod('upi')"
+                      class="accent-amber-500" />
+                    <i class="fa-solid fa-mobile-screen-button theme-accent-text"></i>
+                    <div>
+                      <span class="text-xs font-bold block">UPI Instant Pay</span>
+                      <span class="text-[10px] theme-text-secondary">Google Pay, PhonePe, Paytm</span>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded theme-accent-bg">INSTANT</span>
+                </div>
+                <div id="pay-sub-upi" class="mt-3 pt-2.5 border-t theme-border space-y-2">
+                  <div class="flex gap-2">
+                    <button type="button" onclick="selectUpiProvider(this, 'Google Pay')"
+                      class="upi-sub-btn px-3 py-1.5 rounded-xl theme-accent-bg text-[11px] font-bold cursor-pointer">Google
+                      Pay</button>
+                    <button type="button" onclick="selectUpiProvider(this, 'PhonePe')"
+                      class="upi-sub-btn px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-[11px] font-bold cursor-pointer">PhonePe</button>
+                    <button type="button" onclick="selectUpiProvider(this, 'Paytm')"
+                      class="upi-sub-btn px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-[11px] font-bold cursor-pointer">Paytm</button>
+                  </div>
+                  <input type="text" value="aarav.mehta@okicici" placeholder="Enter UPI ID"
+                    class="w-full px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-xs outline-none" />
+                </div>
+              </label>
+
+              <!-- Credit / Debit Cards -->
+              <label
+                class="block p-3.5 rounded-2xl theme-bg-secondary border theme-border cursor-pointer pay-method-card"
+                data-pay="card">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="pay_opt" value="card" onchange="switchPaymentMethod('card')"
+                    class="accent-amber-500" />
+                  <i class="fa-regular fa-credit-card theme-accent-text"></i>
+                  <div>
+                    <span class="text-xs font-bold block">Credit & Debit Cards</span>
+                    <span class="text-[10px] theme-text-secondary">Visa, Mastercard, RuPay, Amex</span>
+                  </div>
+                </div>
+                <div id="pay-sub-card" class="hidden mt-3 pt-2.5 border-t theme-border space-y-2">
+                  <input type="text" value="4532 •••• •••• 8842" placeholder="Card Number"
+                    class="w-full px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-xs outline-none" />
+                  <div class="grid grid-cols-2 gap-2">
+                    <input type="text" value="09/29" placeholder="MM/YY"
+                      class="px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-xs outline-none" />
+                    <input type="password" value="731" placeholder="CVV"
+                      class="px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-xs outline-none" />
+                  </div>
+                </div>
+              </label>
+
+              <!-- Net Banking -->
+              <label
+                class="block p-3.5 rounded-2xl theme-bg-secondary border theme-border cursor-pointer pay-method-card"
+                data-pay="netbanking">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="pay_opt" value="netbanking" onchange="switchPaymentMethod('netbanking')"
+                    class="accent-amber-500" />
+                  <i class="fa-solid fa-building-columns theme-accent-text"></i>
+                  <div>
+                    <span class="text-xs font-bold block">Net Banking</span>
+                    <span class="text-[10px] theme-text-secondary">HDFC, ICICI, SBI, Axis Bank</span>
+                  </div>
+                </div>
+                <div id="pay-sub-netbanking" class="hidden mt-2.5 pt-2.5 border-t theme-border">
+                  <select class="w-full px-3 py-1.5 rounded-xl theme-bg-card border theme-border text-xs outline-none">
+                    <option>HDFC Bank Retail NetBanking</option>
+                    <option>ICICI Bank</option>
+                    <option>State Bank of India</option>
+                    <option>Axis Bank</option>
+                  </select>
+                </div>
+              </label>
+
+              <!-- Digital Wallets -->
+              <label
+                class="block p-3.5 rounded-2xl theme-bg-secondary border theme-border cursor-pointer pay-method-card"
+                data-pay="wallet">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="pay_opt" value="wallet" onchange="switchPaymentMethod('wallet')"
+                    class="accent-amber-500" />
+                  <i class="fa-solid fa-wallet theme-accent-text"></i>
+                  <div>
+                    <span class="text-xs font-bold block">Digital Wallets</span>
+                    <span class="text-[10px] theme-text-secondary">Amazon Pay, Paytm Wallet, Mobikwik</span>
+                  </div>
+                </div>
+              </label>
+
+              <!-- Cash on Delivery -->
+              <label
+                class="block p-3.5 rounded-2xl theme-bg-secondary border theme-border cursor-pointer pay-method-card"
+                data-pay="cod">
+                <div class="flex items-center gap-2.5">
+                  <input type="radio" name="pay_opt" value="cod" onchange="switchPaymentMethod('cod')"
+                    class="accent-amber-500" />
+                  <i class="fa-solid fa-money-bill-wave theme-accent-text"></i>
+                  <div>
+                    <span class="text-xs font-bold block">Cash on Delivery (COD)</span>
+                    <span class="text-[10px] theme-text-secondary">Pay upon doorstep delivery</span>
+                  </div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 border-t theme-border theme-bg-secondary">
+          <button onclick="placeOrderNow()"
+            class="w-full py-3.5 rounded-xl theme-accent-bg text-sm font-bold shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-lock text-xs"></i>
+            <span>Place Order • <span id="checkout-place-total">₹0</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 3: ORDER SUCCESS ANIMATION & TRANSITION TO TRACKING -->
+      <div id="cart-step-success" class="hidden flex-1 p-6 flex flex-col items-center justify-center text-center">
+        <div class="relative w-24 h-24 flex items-center justify-center mb-5">
+          <div class="absolute inset-0 rounded-full bg-emerald-500/30 pulse-ring"></div>
+          <div
+            class="relative w-20 h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center text-4xl shadow-xl">
+            <i class="fa-solid fa-check"></i>
+          </div>
+        </div>
+        <span class="text-xs uppercase tracking-[0.22em] text-emerald-500 font-bold">Payment Confirmed</span>
+        <h3 class="font-serif-brand text-3xl font-bold mt-1 mb-2">Order Placed Successfully!</h3>
+        <p class="text-xs theme-text-secondary max-w-xs mb-6">
+          Order <strong class="theme-text-primary">#PRC-9042</strong> has been transmitted to the kitchen. Your valet is
+          assigned and ready.
+        </p>
+        <button onclick="launchLiveTrackingFromOrder()"
+          class="w-full py-3.5 rounded-xl theme-accent-bg text-sm font-bold shadow-lg cursor-pointer">
+          <i class="fa-solid fa-location-crosshairs mr-1.5"></i> Track Order Live on Map
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL C: PARCELO AI CONCIERGE (History Sidebar + Text + Voice Waveform)
+       ======================================================================== -->
+  <div id="ai-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-2 sm:p-5">
+    <div
+      class="w-full max-w-5xl h-[88vh] rounded-3xl theme-bg-card border theme-border theme-shadow flex overflow-hidden relative">
+
+      <!-- Previous Conversations Sidebar -->
+      <aside id="ai-sidebar"
+        class="w-72 theme-bg-secondary border-r theme-border flex flex-col shrink-0 hidden md:flex">
+        <div class="p-4 border-b theme-border flex items-center justify-between">
+          <span class="font-serif-brand text-xl font-bold">Chat History</span>
+          <button onclick="startNewAiSession()"
+            class="px-2.5 py-1.5 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+            + New
+          </button>
+        </div>
+        <div id="ai-history-list" class="flex-1 overflow-y-auto p-3 space-y-1.5">
+          <!-- Populated by JS -->
+        </div>
+        <div class="p-3 border-t theme-border flex items-center justify-between">
+          <button onclick="clearCurrentAiChat()"
+            class="text-xs text-rose-500 font-semibold hover:underline cursor-pointer">
+            <i class="fa-regular fa-trash-can mr-1"></i> Clear Chat
+          </button>
+          <span class="text-[10px] theme-text-secondary">Parcelo AI v3</span>
+        </div>
+      </aside>
+
+      <!-- Main AI Conversational Workspace -->
+      <div class="flex-1 flex flex-col min-w-0">
+        <!-- AI Header -->
+        <div class="p-4 border-b theme-border flex items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <button onclick="toggleMobileAiHistory()"
+              class="md:hidden w-9 h-9 rounded-xl theme-bg-elevated flex items-center justify-center cursor-pointer">
+              <i class="fa-solid fa-clock-rotate-left text-xs"></i>
+            </button>
+            <div class="w-10 h-10 rounded-2xl theme-accent-bg flex items-center justify-center">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+              <h3 id="ai-session-heading" class="font-bold text-sm sm:text-base leading-tight">Parcelo AI Culinary
+                Sommelier</h3>
+              <span class="text-[11px] theme-text-secondary flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Budget, Mood, Veg/Non-Veg & Restaurant
+                Expert
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="toggleAiVoiceChat()" id="ai-voice-toggle-btn"
+              class="flex items-center gap-2 px-3.5 py-2 rounded-xl theme-bg-elevated border theme-border text-xs font-bold cursor-pointer">
+              <i class="fa-solid fa-microphone-lines theme-accent-text"></i>
+              <span>Voice Chat</span>
+            </button>
+            <button onclick="closeAiModal()"
+              class="w-9 h-9 rounded-full theme-bg-elevated flex items-center justify-center theme-text-secondary hover:opacity-80 cursor-pointer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Text Chat View -->
+        <div id="ai-text-pane" class="flex-1 flex flex-col overflow-hidden">
+          <div id="ai-messages-feed" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Smart Mood / Budget / Diet Prompt Chips -->
+          <div
+            class="px-4 py-2 border-t theme-border theme-bg-secondary flex items-center gap-2 overflow-x-auto no-scrollbar">
+            <button onclick="askParceloAi('Suggest comfort food for a rainy evening mood')"
+              class="px-3 py-1 rounded-full theme-bg-card border theme-border text-xs whitespace-nowrap hover:opacity-80 cursor-pointer">
+              🌧️ Rainy evening mood
+            </button>
+            <button onclick="askParceloAi('Best gourmet dishes under ₹500 budget')"
+              class="px-3 py-1 rounded-full theme-bg-card border theme-border text-xs whitespace-nowrap hover:opacity-80 cursor-pointer">
+              💰 Budget under ₹500
+            </button>
+            <button onclick="askParceloAi('High-protein pure vegetarian dinner ideas')"
+              class="px-3 py-1 rounded-full theme-bg-card border theme-border text-xs whitespace-nowrap hover:opacity-80 cursor-pointer">
+              🥗 Pure Veg picks
+            </button>
+            <button onclick="askParceloAi('Top rated Japanese & Italian restaurants')"
+              class="px-3 py-1 rounded-full theme-bg-card border theme-border text-xs whitespace-nowrap hover:opacity-80 cursor-pointer">
+              🏛️ Best restaurants
+            </button>
+          </div>
+
+          <!-- Input Bar -->
+          <form onsubmit="submitAiMessage(event)" class="p-4 border-t theme-border flex items-center gap-2.5">
+            <button type="button" onclick="toggleAiVoiceChat()"
+              class="w-11 h-11 rounded-xl theme-bg-elevated border theme-border flex items-center justify-center theme-accent-text shrink-0 cursor-pointer"
+              title="Voice Interaction">
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+            <input type="text" id="ai-user-input"
+              placeholder="Ask by mood, budget in ₹, dietary preference, or restaurant..."
+              class="flex-1 px-4 py-3 rounded-xl theme-bg-secondary border theme-border text-sm outline-none" />
+            <button type="submit"
+              class="px-5 py-3 rounded-xl theme-accent-bg text-xs sm:text-sm font-bold shrink-0 cursor-pointer">
+              Send
+            </button>
+          </form>
+        </div>
+
+        <!-- Animated Voice Interaction View -->
+        <div id="ai-voice-pane"
+          class="hidden flex-1 flex flex-col items-center justify-center p-6 text-center theme-bg-secondary">
+          <div class="relative w-28 h-28 flex items-center justify-center mb-6">
+            <div class="absolute inset-0 rounded-full theme-accent-bg pulse-ring"></div>
+            <div
+              class="relative w-24 h-24 rounded-full theme-accent-bg flex items-center justify-center text-3xl shadow-2xl">
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+          </div>
+
+          <span class="text-xs uppercase tracking-[0.22em] theme-accent-text font-bold mb-2">Live Voice Concierge
+            Active</span>
+          <h4 id="ai-voice-transcript" class="font-serif-brand text-2xl sm:text-3xl font-bold max-w-md mb-2">
+            "Listening to your culinary request..."
+          </h4>
+          <p id="ai-voice-subtext" class="text-xs sm:text-sm theme-text-secondary max-w-md min-h-[40px] mb-6">
+            Speak naturally or choose a voice prompt below to get instant spoken & visual recommendations.
+          </p>
+
+          <!-- Multi-bar Animated Audio Waveform -->
+          <div class="flex items-center justify-center gap-1.5 h-14 mb-7">
+            <span class="w-1.5 h-7 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-12 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-8 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-14 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-10 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-13 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-7 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-11 rounded-full theme-accent-bg wave-bar"></span>
+            <span class="w-1.5 h-6 rounded-full theme-accent-bg wave-bar"></span>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-2 max-w-lg mb-7">
+            <button onclick="simulateAiVoicePrompt('Curate a romantic Italian dinner under ₹1400')"
+              class="px-4 py-2 rounded-xl theme-bg-card border theme-border text-xs font-semibold hover:opacity-85 cursor-pointer">
+              🎙️ "Curate a romantic Italian dinner under ₹1400"
+            </button>
+            <button onclick="simulateAiVoicePrompt('I am in the mood for spicy Hyderabadi food')"
+              class="px-4 py-2 rounded-xl theme-bg-card border theme-border text-xs font-semibold hover:opacity-85 cursor-pointer">
+              🎙️ "I am in the mood for spicy Hyderabadi food"
+            </button>
+          </div>
+
+          <button onclick="toggleAiVoiceChat()"
+            class="px-5 py-2.5 rounded-xl bg-rose-600 text-white text-xs font-bold cursor-pointer">
+            <i class="fa-solid fa-stop mr-1.5"></i> Stop Voice & View Chat
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL D: VOICE SEARCH OVERLAY
+       ======================================================================== -->
+  <div id="voice-search-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-3xl theme-bg-card border theme-border p-7 text-center theme-shadow relative">
+      <button onclick="closeVoiceSearchModal()"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full theme-bg-elevated flex items-center justify-center theme-text-secondary cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="relative w-20 h-20 mx-auto mb-5 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full theme-accent-bg pulse-ring"></div>
+        <div class="relative w-16 h-16 rounded-full theme-accent-bg flex items-center justify-center text-2xl">
+          <i class="fa-solid fa-microphone"></i>
+        </div>
+      </div>
+
+      <h3 class="font-serif-brand text-2xl font-bold mb-1">Voice Search</h3>
+      <p id="voice-search-label" class="text-xs theme-text-secondary mb-5 italic">"Say a dish name, cuisine, or
+        restaurant..."</p>
+
+      <div class="flex items-center justify-center gap-1.5 h-10 mb-6">
+        <span class="w-1.5 h-8 rounded-full theme-accent-bg wave-bar"></span>
+        <span class="w-1.5 h-10 rounded-full theme-accent-bg wave-bar"></span>
+        <span class="w-1.5 h-6 rounded-full theme-accent-bg wave-bar"></span>
+        <span class="w-1.5 h-10 rounded-full theme-accent-bg wave-bar"></span>
+        <span class="w-1.5 h-7 rounded-full theme-accent-bg wave-bar"></span>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2">
+        <button onclick="executeVoiceSearch('Biryani')"
+          class="px-3 py-1.5 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">"Biryani"</button>
+        <button onclick="executeVoiceSearch('Truffle Risotto')"
+          class="px-3 py-1.5 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">"Truffle
+          Risotto"</button>
+        <button onclick="executeVoiceSearch('Sushi')"
+          class="px-3 py-1.5 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold cursor-pointer">"Sushi"</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL E: USER AUTHENTICATION (Email/Password, Phone OTP, Google/Apple)
+       ======================================================================== -->
+  <div id="auth-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-3xl theme-bg-card border theme-border p-6 sm:p-8 theme-shadow relative">
+      <button onclick="closeAuthModal()"
+        class="absolute top-5 right-5 w-9 h-9 rounded-full theme-bg-elevated flex items-center justify-center theme-text-secondary cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-5">
+        <span class="font-serif-brand text-3xl font-bold block">Parcelo Privé</span>
+        <p class="text-xs theme-text-secondary mt-1">Sign in for instant checkout & saved culinary tastes</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-1.5 p-1 rounded-xl theme-bg-secondary border theme-border mb-5">
+        <button id="auth-tab-email" onclick="toggleAuthMethod('email')"
+          class="py-2 rounded-lg text-xs font-bold theme-accent-bg cursor-pointer">Email & Password</button>
+        <button id="auth-tab-otp" onclick="toggleAuthMethod('otp')"
+          class="py-2 rounded-lg text-xs font-bold theme-text-secondary cursor-pointer">Phone OTP</button>
+      </div>
+
+      <form id="auth-form-email" onsubmit="submitAuthLogin(event, 'Email')" class="space-y-3">
+        <input type="text" id="auth-input-name" value="Aarav Mehta" placeholder="Full Name" required
+          class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+        <input type="email" value="aarav.mehta@parcelo.in" placeholder="Email Address" required
+          class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+        <input type="password" value="••••••••••••" placeholder="Password" required
+          class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+        <button type="submit" class="w-full py-3 rounded-xl theme-accent-bg text-xs font-bold shadow-md cursor-pointer">
+          Sign In with Email
+        </button>
+      </form>
+
+      <form id="auth-form-otp" onsubmit="submitAuthLogin(event, 'Phone OTP')" class="hidden space-y-3">
+        <div class="flex gap-2">
+          <input type="tel" value="+91 98450 67890" required
+            class="flex-1 px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none" />
+          <button type="button" onclick="showToast('OTP 7391 sent to +91 98450 67890')"
+            class="px-3 py-2.5 rounded-xl theme-bg-elevated border theme-border text-xs font-bold cursor-pointer">
+            Send OTP
+          </button>
+        </div>
+        <input type="text" maxlength="4" value="7391" placeholder="Enter 4-digit OTP" required
+          class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs text-center tracking-[0.5em] font-bold outline-none" />
+        <button type="submit" class="w-full py-3 rounded-xl theme-accent-bg text-xs font-bold shadow-md cursor-pointer">
+          Verify OTP & Continue
+        </button>
+      </form>
+
+      <div class="grid grid-cols-2 gap-3 mt-5 pt-4 border-t theme-border">
+        <button onclick="socialLogin('Google')"
+          class="py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs font-bold flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-brands fa-google theme-accent-text"></i> Google
+        </button>
+        <button onclick="socialLogin('Apple')"
+          class="py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs font-bold flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-brands fa-apple"></i> Apple
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL F: RATE & REVIEW ORDER MODAL
+       ======================================================================== -->
+  <div id="review-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-3xl theme-bg-card border theme-border p-6 theme-shadow relative">
+      <button onclick="closeReviewModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full theme-bg-elevated flex items-center justify-center text-xs cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <span class="text-[10px] uppercase tracking-widest theme-accent-text font-bold">Guest Feedback</span>
+      <h3 id="review-modal-rest" class="font-serif-brand text-2xl font-bold mt-0.5 mb-3">Rate Your Experience</h3>
+
+      <div class="flex items-center justify-center gap-2 my-4 text-2xl" id="review-stars-row">
+        <button type="button" onclick="setReviewStars(1)" class="review-star text-amber-400 cursor-pointer"><i
+            class="fa-solid fa-star"></i></button>
+        <button type="button" onclick="setReviewStars(2)" class="review-star text-amber-400 cursor-pointer"><i
+            class="fa-solid fa-star"></i></button>
+        <button type="button" onclick="setReviewStars(3)" class="review-star text-amber-400 cursor-pointer"><i
+            class="fa-solid fa-star"></i></button>
+        <button type="button" onclick="setReviewStars(4)" class="review-star text-amber-400 cursor-pointer"><i
+            class="fa-solid fa-star"></i></button>
+        <button type="button" onclick="setReviewStars(5)" class="review-star text-amber-400 cursor-pointer"><i
+            class="fa-solid fa-star"></i></button>
+      </div>
+
+      <textarea id="review-comment-box" rows="3" placeholder="Share notes on taste, packaging, and valet service..."
+        class="w-full px-3.5 py-2.5 rounded-xl theme-bg-secondary border theme-border text-xs outline-none mb-4"></textarea>
+
+      <button onclick="submitOrderReview()"
+        class="w-full py-3 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+        Submit Verified Review
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       APPLICATION DATA & INTERACTIVE JAVASCRIPT ENGINE
+       ======================================================================== -->
+  <script>
+    // ------------------------------------------------------------------------
+    // 1. DATA: RESTAURANTS, MENU ITEMS & ORDER HISTORY
+    // ------------------------------------------------------------------------
+    const RESTAURANTS = [
+      {
+        id: 1,
+        name: "The Royal Saffron Room",
+        cuisines: ["Indian", "Mughlai", "Kebabs"],
+        primaryCuisine: "Indian",
+        rating: 4.9,
+        reviews: "1,420",
+        deliveryTime: "25–30 mins",
+        deliveryMins: 28,
+        deliveryFee: "₹30",
+        minOrder: 249,
+        vegOnly: false,
+        location: "Lavelle Road, Bengaluru",
+        badge: "Flagship Kitchen",
+        cover: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: 2,
+        name: "Osteria Tartufo & Burrata",
+        cuisines: ["Italian", "Artisanal Pasta", "Wood-Fired"],
+        primaryCuisine: "Italian",
+        rating: 4.8,
+        reviews: "980",
+        deliveryTime: "22–28 mins",
+        deliveryMins: 25,
+        deliveryFee: "Free",
+        minOrder: 299,
+        vegOnly: true,
+        location: "Indiranagar 12th Main, Bengaluru",
+        badge: "100% Pure Veg",
+        cover: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: 3,
+        name: "Kuroki Omakase & Ramen Bar",
+        cuisines: ["Japanese", "Sushi", "Ramen"],
+        primaryCuisine: "Japanese",
+        rating: 4.9,
+        reviews: "1,150",
+        deliveryTime: "30–35 mins",
+        deliveryMins: 32,
+        deliveryFee: "₹40",
+        minOrder: 499,
+        vegOnly: false,
+        location: "UB City, Vittal Mallya Rd",
+        badge: "Michelin Inspired",
+        cover: "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: 4,
+        name: "Cedar & Sumac Beirut Kitchen",
+        cuisines: ["Lebanese", "Mediterranean", "Mezze"],
+        primaryCuisine: "Lebanese",
+        rating: 4.7,
+        reviews: "760",
+        deliveryTime: "20–25 mins",
+        deliveryMins: 22,
+        deliveryFee: "Free",
+        minOrder: 199,
+        vegOnly: false,
+        location: "Koramangala 4th Block",
+        badge: "Fastest Delivery",
+        cover: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: 5,
+        name: "Casa Oaxaca Cantina",
+        cuisines: ["Mexican", "Tacos", "Small Plates"],
+        primaryCuisine: "Mexican",
+        rating: 4.6,
+        reviews: "640",
+        deliveryTime: "24–29 mins",
+        deliveryMins: 26,
+        deliveryFee: "₹25",
+        minOrder: 249,
+        vegOnly: false,
+        location: "HSR Layout Sector 2",
+        badge: "Trending Now",
+        cover: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        id: 6,
+        name: "Maison Lumière Bistro",
+        cuisines: ["Continental", "French", "Desserts"],
+        primaryCuisine: "Continental",
+        rating: 4.8,
+        reviews: "890",
+        deliveryTime: "28–34 mins",
+        deliveryMins: 31,
+        deliveryFee: "₹35",
+        minOrder: 399,
+        vegOnly: false,
+        location: "Sadashivanagar, Bengaluru",
+        badge: "Chef's Table",
+        cover: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80"
+      }
+    ];
+
+    const DISHES = [
+      {
+        id: 101,
+        restaurantId: 1,
+        name: "Nizam's Saffron Hyderabadi Dum Biryani",
+        cuisine: "Indian",
+        category: "Main Course",
+        price: 450,
+        rating: 4.9,
+        veg: false,
+        tag: "Bestseller",
+        trending: true,
+        chefSpecial: true,
+        description: "Aged basmati rice slow-cooked in a sealed handi with Kashmiri saffron, caramelized shallots, and tender spiced cuts.",
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 102,
+        restaurantId: 1,
+        name: "Charcoal Paneer Tikka Lababdar",
+        cuisine: "Indian",
+        category: "Main Course",
+        price: 390,
+        rating: 4.8,
+        veg: true,
+        tag: "Popular",
+        trending: false,
+        chefSpecial: true,
+        description: "Smoked cottage cheese cubes simmered in a velvety heirloom tomato and cashew reduction with kasuri methi.",
+        image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 103,
+        restaurantId: 1,
+        name: "Galouti Kebab & Saffron Sheermal",
+        cuisine: "Indian",
+        category: "Starters",
+        price: 420,
+        rating: 4.9,
+        veg: false,
+        tag: "Chef Special",
+        trending: true,
+        chefSpecial: true,
+        description: "Melt-in-mouth Lucknowi spiced medallions served atop warm saffron-glazed flatbread with mint chutney.",
+        image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 104,
+        restaurantId: 1,
+        name: "Rosewater & Pistachio Shahi Tukda",
+        cuisine: "Indian",
+        category: "Desserts",
+        price: 260,
+        rating: 4.8,
+        veg: true,
+        tag: "Must Try",
+        trending: false,
+        chefSpecial: false,
+        description: "Cardamom-infused brioche soaked in reduced saffron rabri, garnished with Iranian pistachios and silver leaf.",
+        image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 105,
+        restaurantId: 2,
+        name: "Black Truffle & Porcini Mushroom Risotto",
+        cuisine: "Italian",
+        category: "Main Course",
+        price: 640,
+        rating: 4.9,
+        veg: true,
+        tag: "Bestseller",
+        trending: true,
+        chefSpecial: true,
+        description: "Acquerello Carnaroli rice folded with 24-month aged Parmigiano-Reggiano, wild porcini, and Umbrian black truffle.",
+        image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 106,
+        restaurantId: 2,
+        name: "Artisanal Burrata & San Marzano Tagliatelle",
+        cuisine: "Italian",
+        category: "Main Course",
+        price: 580,
+        rating: 4.8,
+        veg: true,
+        tag: "Popular",
+        trending: false,
+        chefSpecial: false,
+        description: "Hand-rolled ribbon pasta tossed in sweet Vesuvian tomato basil reduction crowned with fresh Pugliese burrata.",
+        image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 107,
+        restaurantId: 3,
+        name: "Omakase Dragon Roll & Salmon Nigiri",
+        cuisine: "Japanese",
+        category: "Starters",
+        price: 790,
+        rating: 4.9,
+        veg: false,
+        tag: "Chef Special",
+        trending: true,
+        chefSpecial: true,
+        description: "8-piece torched avocado & tempura roll paired with 4 hand-pressed Norwegian salmon nigiri and fresh wasabi.",
+        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 108,
+        restaurantId: 3,
+        name: "Kyoto Spicy Miso & Crispy Tofu Ramen",
+        cuisine: "Japanese",
+        category: "Main Course",
+        price: 520,
+        rating: 4.8,
+        veg: true,
+        tag: "Bestseller",
+        trending: true,
+        chefSpecial: false,
+        description: "Rich roasted sesame & red miso broth with handmade noodles, charred bok choy, sweet corn, and chili oil.",
+        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 109,
+        restaurantId: 4,
+        name: "Beirut Royal Mezze Platter & Za'atar Pita",
+        cuisine: "Lebanese",
+        category: "Starters",
+        price: 490,
+        rating: 4.9,
+        veg: true,
+        tag: "Bestseller",
+        trending: false,
+        chefSpecial: true,
+        description: "Silky tahini hummus, smoky baba ganoush, crisp herb falafel, tabbouleh, pomegranate molasses, and warm pita.",
+        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 110,
+        restaurantId: 5,
+        name: "Smoked Chipotle Birria Tacos & Consommé",
+        cuisine: "Mexican",
+        category: "Main Course",
+        price: 460,
+        rating: 4.7,
+        veg: false,
+        tag: "Trending",
+        trending: true,
+        chefSpecial: false,
+        description: "Three crispy heirloom blue-corn tortillas filled with slow-braised chipotle adobo, Oaxaca cheese, and dipping broth.",
+        image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 111,
+        restaurantId: 6,
+        name: "Herb-Crusted Norwegian Salmon & Asparagus",
+        cuisine: "Continental",
+        category: "Main Course",
+        price: 820,
+        rating: 4.9,
+        veg: false,
+        tag: "Chef Special",
+        trending: false,
+        chefSpecial: true,
+        description: "Pan-seared Atlantic salmon fillet with lemon-caper beurre blanc, charred asparagus, and truffle mash.",
+        image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 112,
+        restaurantId: 1,
+        name: "Kashmiri Kahwa & Rose Iced Infusion",
+        cuisine: "Indian",
+        category: "Beverages",
+        price: 210,
+        rating: 4.7,
+        veg: true,
+        tag: "Refreshing",
+        trending: false,
+        chefSpecial: false,
+        description: "Chilled green tea steeped with saffron strands, crushed green cardamom, Damascus rose petals, and slivered almonds.",
+        image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    const CUISINE_CATEGORIES = [
+      { name: "Indian", img: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=300&q=80" },
+      { name: "Italian", img: "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?auto=format&fit=crop&w=300&q=80" },
+      { name: "Japanese", img: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=300&q=80" },
+      { name: "Mexican", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=300&q=80" },
+      { name: "Lebanese", img: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=300&q=80" },
+      { name: "Continental", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=300&q=80" },
+      { name: "Chinese", img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=300&q=80" },
+      { name: "Desserts", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80" }
+    ];
+
+    // ------------------------------------------------------------------------
+    // 2. APPLICATION STATE
+    // ------------------------------------------------------------------------
+    let state = {
+      theme: "midnight",
+      currentView: "home",
+      activeRestaurantId: 1,
+      activeMenuCategory: "All",
+      homeDishFilter: "all",
+      restFilters: { veg: false, rating: false },
+      addresses: [
+        { label: "Home", text: "Penthouse 14B, Koramangala 4th Block, Bengaluru" },
+        { label: "Work", text: "Prestige Tech Tower, Indiranagar 100ft Rd, Bengaluru" },
+        { label: "Villa", text: "Palm Meadows, Whitefield Main Rd, Bengaluru" }
+      ],
+      selectedAddressIndex: 0,
+      searchHistory: ["Hyderabadi Biryani", "Truffle Risotto", "Omakase Sushi", "Lebanese Mezze"],
+      cart: [
+        {
+          cartKey: "101-default",
+          dishId: 101,
+          qty: 1,
+          unitPrice: 450,
+          customizationSummary: "Regular • Medium Spice"
+        }
+      ],
+      promoCode: null,
+      paymentMethod: "upi",
+      upiProvider: "Google Pay",
+      customizingDishId: null,
+      custState: { portion: "Regular", portionDelta: 0, spice: "Medium", qty: 1 },
+      trackingStepIndex: 2, // 0: Confirmed, 1: Preparing, 2: Picked Up, 3: Delivered
+      favoriteRestaurantIds: [1, 2],
+      favoriteDishIds: [101, 105],
+      orderHistory: [
+        {
+          id: "PRC-8914",
+          date: "16 Nov 2026 • 8:42 PM",
+          restaurantId: 1,
+          restaurantName: "The Royal Saffron Room",
+          items: [
+            { dishId: 101, name: "Nizam's Saffron Hyderabadi Dum Biryani", qty: 1, price: 450 },
+            { dishId: 104, name: "Rosewater & Pistachio Shahi Tukda", qty: 1, price: 260 }
+          ],
+          total: 775,
+          status: "Delivered",
+          rated: 5
+        },
+        {
+          id: "PRC-8790",
+          date: "11 Nov 2026 • 1:15 PM",
+          restaurantId: 2,
+          restaurantName: "Osteria Tartufo & Burrata",
+          items: [
+            { dishId: 105, name: "Black Truffle & Porcini Mushroom Risotto", qty: 1, price: 640 }
+          ],
+          total: 672,
+          status: "Delivered",
+          rated: null
+        }
+      ],
+      aiVoiceActive: false,
+      activeAiSessionId: "ai-1",
+      aiSessions: [
+        {
+          id: "ai-1",
+          title: "Evening Tasting Suggestions",
+          time: "Just now",
+          messages: [
+            {
+              sender: "ai",
+              text: "Good evening, Aarav! I'm your Parcelo Culinary Concierge. Tell me your mood, budget in ₹, or dietary preference—and I can add dishes straight to your bag.",
+              dishIds: [101, 105]
+            }
+          ]
+        },
+        {
+          id: "ai-2",
+          title: "Pure Veg Italian Dinner",
+          time: "Yesterday",
+          messages: [
+            { sender: "user", text: "Recommend pure vegetarian Italian dishes." },
+            {
+              sender: "ai",
+              text: "Osteria Tartufo & Burrata is 100% vegetarian. Their Black Truffle Risotto and Burrata Tagliatelle are extraordinary:",
+              dishIds: [105, 106]
+            }
+          ]
+        }
+      ]
+    };
+
+    // ------------------------------------------------------------------------
+    // 3. NAVIGATION & MULTI-THEME SWITCHER
+    // ------------------------------------------------------------------------
+    function navigateTo(viewName) {
+      state.currentView = viewName;
+      document.querySelectorAll(".app-view").forEach(sec => sec.classList.add("hidden"));
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) target.classList.remove("hidden");
+
+      document.querySelectorAll(".nav-pill").forEach(btn => {
+        if (btn.dataset.nav === viewName) {
+          btn.classList.add("theme-accent-bg");
+        } else {
+          btn.classList.remove("theme-accent-bg");
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      if (viewName === "restaurants") renderRestaurantListing();
+      if (viewName === "tracking") renderTrackingState();
+      if (viewName === "profile") renderProfileScreen();
+    }
+
+    function setTheme(themeName) {
+      state.theme = themeName;
+      document.documentElement.setAttribute("data-theme", themeName);
+
+      document.querySelectorAll(".theme-switch-btn").forEach(btn => {
+        btn.classList.remove("theme-accent-bg", "shadow-sm");
+        btn.classList.add("theme-text-secondary");
+      });
+
+      const active = document.getElementById(`theme-btn-${themeName}`);
+      if (active) {
+        active.classList.add("theme-accent-bg", "shadow-sm");
+        active.classList.remove("theme-text-secondary");
+      }
+
+      const names = {
+        midnight: "Midnight Luxe (Black & Gold)",
+        royal: "Royal Coastal (Blue & Ivory)",
+        velvet: "Velvet Heritage (Burgundy & Beige)"
+      };
+      showToast(`Palette switched to ${names[themeName]}`);
+    }
+
+    // ------------------------------------------------------------------------
+    // 4. LOCATION SELECTOR & SEARCH BAR (VOICE + HISTORY)
+    // ------------------------------------------------------------------------
+    function toggleLocationDropdown() {
+      renderLocationOptions();
+      document.getElementById("location-dropdown-menu").classList.toggle("hidden");
+    }
+
+    function renderLocationOptions() {
+      const list = document.getElementById("location-options-list");
+      list.innerHTML = state.addresses.map((addr, idx) => `
+        <button onclick="selectDeliveryAddress(${idx})"
+          class="w-full text-left p-2.5 rounded-xl text-xs flex items-start gap-2.5 cursor-pointer ${idx === state.selectedAddressIndex ? "theme-accent-bg font-bold" : "hover:opacity-80"
+        }">
+          <i class="fa-solid fa-location-dot mt-0.5"></i>
+          <div>
+            <span class="block font-bold">${addr.label}</span>
+            <span class="text-[11px] opacity-80 line-clamp-1">${addr.text}</span>
+          </div>
+        </button>
+      `).join("");
+    }
+
+    function selectDeliveryAddress(idx) {
+      state.selectedAddressIndex = idx;
+      const addr = state.addresses[idx];
+      document.getElementById("active-location-label").textContent = addr.text.split(",")[0];
+      document.getElementById("location-dropdown-menu").classList.add("hidden");
+      showToast(`Delivery location set to ${addr.label}`);
+    }
+
+    function openAddAddressPrompt() {
+      document.getElementById("location-dropdown-menu").classList.add("hidden");
+      navigateTo("profile");
+      switchProfileTab("details");
+      showToast("Add your new address below");
+    }
+
+    // Search History & Filtering
+    function showHomeSearchHistory() {
+      const box = document.getElementById("home-search-history-dropdown");
+      const chips = document.getElementById("home-search-history-chips");
+      if (state.searchHistory.length === 0) {
+        chips.innerHTML = `<span class="text-xs theme-text-secondary italic">No recent searches.</span>`;
+      } else {
+        chips.innerHTML = state.searchHistory.map(term => `
+          <button onclick="applyHomeSearchTerm('${term.replace(/'/g, "\\'")}')"
+            class="px-3 py-1.5 rounded-xl theme-bg-secondary border theme-border text-xs font-semibold hover:opacity-80 flex items-center gap-1.5 cursor-pointer">
+            <i class="fa-solid fa-magnifying-glass text-[10px] theme-accent-text"></i> ${term}
+          </button>
+        `).join("");
+      }
+      box.classList.remove("hidden");
+    }
+
+    function applyHomeSearchTerm(term) {
+      const input = document.getElementById("home-search-input");
+      input.value = term;
+      document.getElementById("home-search-history-dropdown").classList.add("hidden");
+      handleHomeSearchInput(term);
+    }
+
+    function handleHomeSearchInput(val) {
+      document.getElementById("home-clear-search").classList.toggle("hidden", !val.trim());
+      renderHomeDishes(val.trim());
+    }
+
+    function clearHomeSearch() {
+      document.getElementById("home-search-input").value = "";
+      document.getElementById("home-clear-search").classList.add("hidden");
+      renderHomeDishes("");
+    }
+
+    function clearSearchHistory() {
+      state.searchHistory = [];
+      showHomeSearchHistory();
+      showToast("Recent search history cleared");
+    }
+
+    document.getElementById("home-search-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && e.target.value.trim()) {
+        const clean = e.target.value.trim();
+        state.searchHistory = [clean, ...state.searchHistory.filter(t => t.toLowerCase() !== clean.toLowerCase())].slice(0, 6);
+        document.getElementById("home-search-history-dropdown").classList.add("hidden");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      const sWrap = document.getElementById("home-search-wrapper");
+      if (sWrap && !sWrap.contains(e.target)) {
+        document.getElementById("home-search-history-dropdown").classList.add("hidden");
+      }
+      const lWrap = document.getElementById("location-dropdown-wrapper");
+      if (lWrap && !lWrap.contains(e.target)) {
+        document.getElementById("location-dropdown-menu").classList.add("hidden");
+      }
+    });
+
+    // Voice Search Modal
+    function openVoiceSearchModal() {
+      document.getElementById("voice-search-label").textContent = '"Say a dish name, cuisine, or restaurant..."';
+      document.getElementById("voice-search-modal").classList.remove("hidden");
+    }
+    function closeVoiceSearchModal() {
+      document.getElementById("voice-search-modal").classList.add("hidden");
+    }
+    function executeVoiceSearch(term) {
+      document.getElementById("voice-search-label").textContent = `"${term}"`;
+      setTimeout(() => {
+        closeVoiceSearchModal();
+        state.searchHistory = [term, ...state.searchHistory.filter(t => t !== term)].slice(0, 6);
+        applyHomeSearchTerm(term);
+        showToast(`Voice search matched "${term}"`);
+      }, 550);
+    }
+
+    // ------------------------------------------------------------------------
+    // 5. HOME DASHBOARD RENDERING
+    // ------------------------------------------------------------------------
+    function renderHomeDashboard() {
+      // Cuisines Strip
+      const cStrip = document.getElementById("home-cuisine-strip");
+      cStrip.innerHTML = CUISINE_CATEGORIES.map(c => `
+        <button onclick="jumpToCuisine('${c.name}')"
+          class="group shrink-0 w-28 sm:w-32 rounded-2xl theme-bg-card border theme-border p-2.5 text-center hover:scale-[1.03] transition-transform cursor-pointer">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mx-auto mb-2 border-2 theme-border">
+            <img src="${c.img}" alt="${c.name}"
+              onerror="this.src='https://placehold.co/200x200/1C1C1C/D4AF37?text=${c.name}'"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+          </div>
+          <span class="text-xs font-bold block">${c.name}</span>
+        </button>
+      `).join("");
+
+      // Popular Restaurants (Top 3)
+      const rGrid = document.getElementById("home-restaurants-grid");
+      rGrid.innerHTML = RESTAURANTS.slice(0, 3).map(r => buildRestaurantCardHtml(r)).join("");
+
+      renderHomeDishes("");
+    }
+
+    function jumpToCuisine(cuisineName) {
+      navigateTo("restaurants");
+      const sel = document.getElementById("rest-filter-cuisine");
+      if ([...sel.options].some(o => o.value === cuisineName)) {
+        sel.value = cuisineName;
+      } else {
+        sel.value = "All";
+      }
+      renderRestaurantListing();
+    }
+
+    function filterHomeDishes(mode) {
+      state.homeDishFilter = mode;
+      ["all", "trending", "special"].forEach(m => {
+        const btn = document.getElementById(`home-dish-tab-${m}`);
+        if (m === mode) {
+          btn.classList.add("theme-accent-bg");
+          btn.classList.remove("theme-bg-card", "border", "theme-border");
+        } else {
+          btn.classList.remove("theme-accent-bg");
+          btn.classList.add("theme-bg-card", "border", "theme-border");
+        }
+      });
+      renderHomeDishes(document.getElementById("home-search-input").value.trim());
+    }
+
+    function renderHomeDishes(searchTerm = "") {
+      const grid = document.getElementById("home-dishes-grid");
+      const q = searchTerm.toLowerCase();
+      let list = DISHES.filter(d => {
+        const matchTab =
+          state.homeDishFilter === "all" ||
+          (state.homeDishFilter === "trending" && d.trending) ||
+          (state.homeDishFilter === "special" && d.chefSpecial);
+        const matchQuery = !q || d.name.toLowerCase().includes(q) || d.cuisine.toLowerCase().includes(q);
+        return matchTab && matchQuery;
+      });
+
+      if (!q && state.homeDishFilter === "all") list = list.slice(0, 8);
+
+      grid.innerHTML = list.map(d => `
+        <div class="hover-zoom-card rounded-3xl theme-bg-card border theme-border overflow-hidden flex flex-col theme-shadow">
+          <div onclick="openCustomizationModal(${d.id})" class="relative h-44 overflow-hidden cursor-pointer bg-neutral-800">
+            <img src="${d.image}" alt="${d.name}"
+              onerror="this.src='https://placehold.co/600x400/1C1C1C/D4AF37?text=Parcelo'"
+              class="zoom-img w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-black/65 text-amber-300 backdrop-blur-md">
+              ${d.tag}
+            </span>
+            <button onclick="event.stopPropagation(); toggleFavoriteDish(${d.id})"
+              class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs cursor-pointer">
+              <i class="${state.favoriteDishIds.includes(d.id) ? "fa-solid text-rose-500" : "fa-regular"} fa-heart"></i>
+            </button>
+            <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white text-[11px]">
+              <span class="flex items-center gap-1">
+                <span class="w-3.5 h-3.5 rounded-sm bg-white flex items-center justify-center">
+                  <span class="w-1.5 h-1.5 rounded-full ${d.veg ? "bg-emerald-600" : "bg-rose-600"}"></span>
+                </span>
+                ${d.cuisine}
+              </span>
+              <span class="font-bold text-amber-300"><i class="fa-solid fa-star text-[10px]"></i> ${d.rating}</span>
+            </div>
+          </div>
+
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div onclick="openCustomizationModal(${d.id})" class="cursor-pointer">
+              <h3 class="font-serif-brand text-xl font-bold leading-snug mb-1 line-clamp-1">${d.name}</h3>
+              <p class="text-[11px] theme-text-secondary line-clamp-2 mb-3">${d.description}</p>
+            </div>
+            <div class="pt-3 border-t theme-border flex items-center justify-between">
+              <span class="text-base font-bold theme-accent-text">₹${d.price}</span>
+              <button onclick="openCustomizationModal(${d.id})"
+                class="px-3.5 py-1.5 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+                + Add
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // ------------------------------------------------------------------------
+    // 6. RESTAURANT DISCOVERY & FILTERING
+    // ------------------------------------------------------------------------
+    function toggleRestFilter(key) {
+      state.restFilters[key] = !state.restFilters[key];
+      const btn = document.getElementById(`rest-filter-${key}`);
+      btn.classList.toggle("theme-accent-bg", state.restFilters[key]);
+      renderRestaurantListing();
+    }
+
+    function renderRestaurantListing() {
+      const grid = document.getElementById("restaurant-listing-grid");
+      const query = document.getElementById("rest-search-input").value.trim().toLowerCase();
+      const priceTier = document.getElementById("rest-filter-price").value;
+      const cuisine = document.getElementById("rest-filter-cuisine").value;
+      const sortBy = document.getElementById("rest-sort-select").value;
+
+      let filtered = RESTAURANTS.filter(r => {
+        const matchQuery = !query || r.name.toLowerCase().includes(query) || r.cuisines.join(" ").toLowerCase().includes(query);
+        const matchVeg = !state.restFilters.veg || r.vegOnly;
+        const matchRating = !state.restFilters.rating || r.rating >= 4.7;
+        const matchCuisine = cuisine === "All" || r.primaryCuisine === cuisine;
+        const matchPrice =
+          priceTier === "all" ||
+          (priceTier === "budget" && r.minOrder < 300) ||
+          (priceTier === "mid" && r.minOrder >= 300 && r.minOrder <= 450) ||
+          (priceTier === "luxury" && r.minOrder > 450);
+        return matchQuery && matchVeg && matchRating && matchCuisine && matchPrice;
+      });
+
+      if (sortBy === "rating") filtered.sort((a, b) => b.rating - a.rating);
+      if (sortBy === "deliveryTime") filtered.sort((a, b) => a.deliveryMins - b.deliveryMins);
+      if (sortBy === "priceLow") filtered.sort((a, b) => a.minOrder - b.minOrder);
+
+      grid.innerHTML = filtered.map(r => buildRestaurantCardHtml(r)).join("");
+    }
+
+    function buildRestaurantCardHtml(r) {
+      const isFav = state.favoriteRestaurantIds.includes(r.id);
+      return `
+        <article onclick="openRestaurantMenu(${r.id})"
+          class="hover-zoom-card rounded-3xl theme-bg-card border theme-border overflow-hidden flex flex-col theme-shadow cursor-pointer">
+          <div class="relative h-52 overflow-hidden bg-neutral-800">
+            <img src="${r.cover}" alt="${r.name}"
+              onerror="this.src='https://placehold.co/800x500/1C1C1C/D4AF37?text=${encodeURIComponent(r.name)}'"
+              class="zoom-img w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+
+            <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-xl text-[10px] font-bold uppercase tracking-wider bg-black/65 text-amber-300 backdrop-blur-md">
+              ${r.badge}
+            </span>
+
+            <button onclick="event.stopPropagation(); toggleFavoriteRestaurant(${r.id})"
+              class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center text-xs cursor-pointer">
+              <i class="${isFav ? "fa-solid text-rose-500" : "fa-regular"} fa-heart"></i>
+            </button>
+
+            <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-white text-xs">
+              <span class="font-semibold"><i class="fa-regular fa-clock mr-1 text-amber-300"></i>${r.deliveryTime}</span>
+              <span class="px-2 py-0.5 rounded-lg bg-emerald-600 font-bold text-[11px]">${r.rating} ★ (${r.reviews})</span>
+            </div>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif-brand text-2xl font-bold mb-1">${r.name}</h3>
+              <p class="text-xs theme-text-secondary mb-3">${r.cuisines.join(" • ")}</p>
+            </div>
+            <div class="pt-3 border-t theme-border flex items-center justify-between text-[11px] theme-text-secondary font-semibold">
+              <span>Delivery: <strong class="theme-text-primary">${r.deliveryFee}</strong></span>
+              <span>Min Order: <strong class="theme-text-primary">₹${r.minOrder}</strong></span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // ------------------------------------------------------------------------
+    // 7. RESTAURANT MENU SCREEN & FLOATING BOTTOM BAR
+    // ------------------------------------------------------------------------
+    function openRestaurantMenu(restaurantId) {
+      state.activeRestaurantId = restaurantId;
+      state.activeMenuCategory = "All";
+      const rest = RESTAURANTS.find(r => r.id === restaurantId) || RESTAURANTS[0];
+
+      document.getElementById("menu-rest-cover").src = rest.cover;
+      document.getElementById("menu-rest-badge").textContent = rest.badge;
+      document.getElementById("menu-rest-cuisines").textContent = rest.cuisines.join(" • ");
+      document.getElementById("menu-rest-name").textContent = rest.name;
+      document.getElementById("menu-rest-location").innerHTML = `<i class="fa-solid fa-location-dot theme-accent-text mr-1"></i> ${rest.location}`;
+      document.getElementById("menu-rest-rating").textContent = rest.rating;
+      document.getElementById("menu-rest-reviews").textContent = `${rest.reviews}+ Verified Reviews`;
+      document.getElementById("menu-rest-time").textContent = rest.deliveryTime;
+      document.getElementById("menu-rest-fee").textContent = rest.deliveryFee;
+      document.getElementById("menu-rest-min").textContent = `₹${rest.minOrder}`;
+
+      updateMenuFavIcon();
+      renderMenuCategoryTabs();
+      renderRestaurantMenuItems();
+      navigateTo("menu");
+    }
+
+    function updateMenuFavIcon() {
+      const isFav = state.favoriteRestaurantIds.includes(state.activeRestaurantId);
+      const btn = document.getElementById("menu-fav-btn");
+      btn.innerHTML = `<i class="${isFav ? "fa-solid text-rose-500" : "fa-regular"} fa-heart"></i>`;
+    }
+
+    function shareRestaurant() {
+      const rest = RESTAURANTS.find(r => r.id === state.activeRestaurantId);
+      showToast(`Share link copied for ${rest.name}!`);
+    }
+
+    function renderMenuCategoryTabs() {
+      const cats = ["All", "Starters", "Main Course", "Desserts", "Beverages"];
+      const container = document.getElementById("menu-category-tabs");
+      container.innerHTML = cats.map(c => `
+        <button onclick="selectMenuCategory('${c}')"
+          class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap border cursor-pointer ${state.activeMenuCategory === c
+          ? "theme-accent-bg border-transparent shadow-sm"
+          : "theme-bg-card theme-border hover:opacity-85"
+        }">
+          ${c}
+        </button>
+      `).join("");
+    }
+
+    function selectMenuCategory(cat) {
+      state.activeMenuCategory = cat;
+      renderMenuCategoryTabs();
+      renderRestaurantMenuItems();
+    }
+
+    function getDishTotalQtyInCart(dishId) {
+      return state.cart.filter(i => i.dishId === dishId).reduce((s, i) => s + i.qty, 0);
+    }
+
+    function renderRestaurantMenuItems() {
+      const container = document.getElementById("restaurant-menu-items-list");
+      const searchQ = document.getElementById("in-menu-search").value.trim().toLowerCase();
+      const vegOnly = document.getElementById("menu-veg-switch").checked;
+
+      // Show dishes from active restaurant + flagship dishes so menu is always rich
+      let dishes = DISHES.filter(d => d.restaurantId === state.activeRestaurantId || state.activeRestaurantId === 1);
+      if (dishes.length < 4) dishes = DISHES.slice(0, 6);
+
+      dishes = dishes.filter(d => {
+        const matchCat = state.activeMenuCategory === "All" || d.category === state.activeMenuCategory;
+        const matchVeg = !vegOnly || d.veg;
+        const matchSearch = !searchQ || d.name.toLowerCase().includes(searchQ) || d.description.toLowerCase().includes(searchQ);
+        return matchCat && matchVeg && matchSearch;
+      });
+
+      container.innerHTML = dishes.map(d => {
+        const qty = getDishTotalQtyInCart(d.id);
+        return `
+          <div class="rounded-3xl theme-bg-card border theme-border p-4 sm:p-5 flex items-center justify-between gap-4 theme-shadow">
+            <!-- Left Dish Info -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-4 h-4 rounded-sm border ${d.veg ? "border-emerald-500" : "border-rose-500"} flex items-center justify-center shrink-0">
+                  <span class="w-2 h-2 rounded-full ${d.veg ? "bg-emerald-500" : "bg-rose-500"}"></span>
+                </span>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider theme-bg-secondary theme-accent-text">
+                  ${d.tag}
+                </span>
+                <span class="text-[11px] font-bold text-amber-400">
+                  <i class="fa-solid fa-star text-[10px]"></i> ${d.rating}
+                </span>
+              </div>
+
+              <h3 onclick="openCustomizationModal(${d.id})" class="font-serif-brand text-xl sm:text-2xl font-bold leading-snug cursor-pointer hover:underline">
+                ${d.name}
+              </h3>
+              <p class="text-base font-bold theme-accent-text mt-0.5">₹${d.price}</p>
+              <p class="text-xs theme-text-secondary mt-1.5 line-clamp-2 leading-relaxed">
+                ${d.description}
+              </p>
+              <button onclick="openCustomizationModal(${d.id})" class="mt-2 text-[11px] font-semibold theme-accent-text hover:underline cursor-pointer">
+                <i class="fa-solid fa-sliders mr-1"></i> Customize Spice, Portion & Add-ons
+              </button>
+            </div>
+
+            <!-- Right Square Thumbnail + ADD / Counter -->
+            <div class="relative w-28 sm:w-32 shrink-0 flex flex-col items-center">
+              <div onclick="openCustomizationModal(${d.id})" class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border theme-border cursor-pointer bg-neutral-800">
+                <img src="${d.image}" alt="${d.name}"
+                  onerror="this.src='https://placehold.co/300x300/1C1C1C/D4AF37?text=Dish'"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform" />
+              </div>
+
+              <div class="-mt-4 z-10">
+                ${qty === 0
+            ? `<button onclick="openCustomizationModal(${d.id})"
+                        class="px-5 py-2 rounded-xl theme-accent-bg text-xs font-extrabold tracking-wider shadow-lg flex items-center gap-1.5 cursor-pointer">
+                        ADD <span class="text-sm leading-none">+</span>
+                      </button>`
+            : `<div class="flex items-center gap-2 px-2 py-1 rounded-xl theme-accent-bg shadow-lg">
+                        <button onclick="quickAdjustDishQty(${d.id}, -1)" class="w-6 h-6 rounded-lg bg-black/15 flex items-center justify-center text-xs font-bold cursor-pointer">
+                          <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <span class="text-xs font-extrabold min-w-[14px] text-center">${qty}</span>
+                        <button onclick="openCustomizationModal(${d.id})" class="w-6 h-6 rounded-lg bg-black/15 flex items-center justify-center text-xs font-bold cursor-pointer">
+                          <i class="fa-solid fa-plus"></i>
+                        </button>
+                      </div>`
+          }
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // ------------------------------------------------------------------------
+    // 8. FOOD CUSTOMIZATION MODAL (Dynamic Price, Spice, Portion, Add-ons)
+    // ------------------------------------------------------------------------
+    function openCustomizationModal(dishId) {
+      const dish = DISHES.find(d => d.id === dishId);
+      if (!dish) return;
+      state.customizingDishId = dishId;
+      state.custState = { portion: "Regular", portionDelta: 0, spice: "Medium", qty: 1 };
+
+      document.getElementById("cust-dish-img").src = dish.image;
+      document.getElementById("cust-dish-tag").textContent = `${dish.cuisine} • ${dish.tag}`;
+      document.getElementById("cust-dish-title").textContent = dish.name;
+      document.getElementById("cust-dish-desc").textContent = dish.description;
+      document.getElementById("cust-instructions").value = "";
+      document.getElementById("cust-qty-display").textContent = "1";
+
+      document.querySelectorAll(".cust-addon-check").forEach(cb => (cb.checked = false));
+      selectCustPortion("Regular", 0);
+      selectCustSpice("Medium");
+
+      document.getElementById("customization-modal").classList.remove("hidden");
+    }
+
+    function closeCustomizationModal() {
+      document.getElementById("customization-modal").classList.add("hidden");
+    }
+
+    function selectCustPortion(name, delta) {
+      state.custState.portion = name;
+      state.custState.portionDelta = delta;
+      document.querySelectorAll(".cust-portion-btn").forEach(btn => {
+        if (btn.dataset.portion === name) {
+          btn.classList.add("theme-accent-bg");
+          btn.classList.remove("theme-bg-secondary", "border", "theme-border");
+        } else {
+          btn.classList.remove("theme-accent-bg");
+          btn.classList.add("theme-bg-secondary", "border", "theme-border");
+        }
+      });
+      updateCustomizationTotal();
+    }
+
+    function selectCustSpice(spice) {
+      state.custState.spice = spice;
+      document.querySelectorAll(".cust-spice-btn").forEach(btn => {
+        if (btn.dataset.spice === spice) {
+          btn.classList.add("theme-accent-bg");
+          btn.classList.remove("theme-bg-secondary", "border", "theme-border");
+        } else {
+          btn.classList.remove("theme-accent-bg");
+          btn.classList.add("theme-bg-secondary", "border", "theme-border");
+        }
+      });
+    }
+
+    function changeCustQty(delta) {
+      state.custState.qty = Math.max(1, state.custState.qty + delta);
+      document.getElementById("cust-qty-display").textContent = state.custState.qty;
+      updateCustomizationTotal();
+    }
+
+    function updateCustomizationTotal() {
+      const dish = DISHES.find(d => d.id === state.customizingDishId);
+      if (!dish) return;
+      let addonSum = 0;
+      document.querySelectorAll(".cust-addon-check:checked").forEach(cb => {
+        addonSum += parseInt(cb.value.split("|")[1], 10);
+      });
+      const unitTotal = dish.price + state.custState.portionDelta + addonSum;
+      const grand = unitTotal * state.custState.qty;
+      document.getElementById("cust-dynamic-total").textContent = `₹${grand}`;
+      return { unitTotal, addonSum };
+    }
+
+    function confirmCustomizedAddToCart() {
+      const dish = DISHES.find(d => d.id === state.customizingDishId);
+      const { unitTotal } = updateCustomizationTotal();
+      const addons = [];
+      document.querySelectorAll(".cust-addon-check:checked").forEach(cb => {
+        addons.push(cb.value.split("|")[0]);
+      });
+      const note = document.getElementById("cust-instructions").value.trim();
+
+      const parts = [`${state.custState.portion}`, `${state.custState.spice} Spice`];
+      if (addons.length) parts.push(addons.join(", "));
+      if (note) parts.push(`"${note}"`);
+      const summary = parts.join(" • ");
+      const key = `${dish.id}-${summary}`;
+
+      const existing = state.cart.find(item => item.cartKey === key);
+      if (existing) {
+        existing.qty += state.custState.qty;
+      } else {
+        state.cart.push({
+          cartKey: key,
+          dishId: dish.id,
+          qty: state.custState.qty,
+          unitPrice: unitTotal,
+          customizationSummary: summary
+        });
+      }
+
+      closeCustomizationModal();
+      updateAllCartDisplays();
+      if (state.currentView === "menu") renderRestaurantMenuItems();
+      showToast(`Added ${state.custState.qty}× ${dish.name} to bag`);
+    }
+
+    function quickAdjustDishQty(dishId, delta) {
+      const idx = state.cart.findIndex(i => i.dishId === dishId);
+      if (idx === -1) return;
+      state.cart[idx].qty += delta;
+      if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
+      updateAllCartDisplays();
+      if (state.currentView === "menu") renderRestaurantMenuItems();
+    }
+
+    // ------------------------------------------------------------------------
+    // 9. CART, CHECKOUT & PAYMENT FLOW
+    // ------------------------------------------------------------------------
+    function calculateBill() {
+      const subtotal = state.cart.reduce((s, item) => s + item.unitPrice * item.qty, 0);
+      let discount = 0;
+      if (state.promoCode === "PARCELO20") discount = Math.min(300, Math.round(subtotal * 0.2));
+      if (state.promoCode === "FEAST150" && subtotal >= 500) discount = 150;
+      const delivery = subtotal === 0 || state.promoCode === "PRIVEFREE" ? 0 : 30;
+      const taxable = Math.max(0, subtotal - discount);
+      const tax = Math.round(taxable * 0.05);
+      const grandTotal = taxable + delivery + tax;
+      return { subtotal, discount, delivery, tax, grandTotal };
+    }
+
+    function updateAllCartDisplays() {
+      const totalItems = state.cart.reduce((s, i) => s + i.qty, 0);
+      const { subtotal, discount, delivery, tax, grandTotal } = calculateBill();
+
+      document.getElementById("header-cart-count").textContent = totalItems;
+
+      // Floating Bottom Bar on Menu Screen ("2 Items | ₹450")
+      const floatBar = document.getElementById("floating-menu-cart-bar");
+      if (totalItems > 0 && state.currentView === "menu") {
+        floatBar.classList.remove("hidden");
+        document.getElementById("floating-bar-summary").textContent =
+          `${totalItems} ${totalItems === 1 ? "Item" : "Items"} | ₹${subtotal}`;
+      } else {
+        floatBar.classList.add("hidden");
+      }
+
+      // Cart Drawer List
+      const listEl = document.getElementById("cart-items-list");
+      const footerEl = document.getElementById("cart-bill-footer");
+
+      if (state.cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="text-center py-16">
+            <i class="fa-solid fa-bag-shopping text-4xl theme-accent-text mb-3 opacity-60"></i>
+            <h4 class="font-serif-brand text-2xl font-bold mb-1">Your bag is empty</h4>
+            <p class="text-xs theme-text-secondary">Add dishes from any restaurant or ask Parcelo AI.</p>
+          </div>
+        `;
+        footerEl.classList.add("hidden");
+        return;
+      }
+
+      footerEl.classList.remove("hidden");
+      listEl.innerHTML = state.cart.map((entry, idx) => {
+        const dish = DISHES.find(d => d.id === entry.dishId);
+        return `
+          <div class="p-3.5 rounded-2xl theme-bg-secondary border theme-border flex items-start gap-3">
+            <img src="${dish.image}" alt="${dish.name}"
+              onerror="this.src='https://placehold.co/150x150/1C1C1C/D4AF37?text=Dish'"
+              class="w-16 h-16 rounded-xl object-cover shrink-0" />
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="text-xs sm:text-sm font-bold leading-snug">${dish.name}</h4>
+                <button onclick="removeCartEntry(${idx})" class="text-xs theme-text-secondary hover:text-rose-500 cursor-pointer" title="Remove">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+              <p class="text-[11px] theme-text-secondary mt-0.5 line-clamp-2">${entry.customizationSummary}</p>
+              <div class="flex items-center justify-between mt-2.5">
+                <span class="text-xs font-bold theme-accent-text">₹${entry.unitPrice * entry.qty}</span>
+                <div class="flex items-center gap-2 p-0.5 rounded-lg theme-bg-card border theme-border">
+                  <button onclick="adjustCartEntryQty(${idx}, -1)" class="w-6 h-6 rounded flex items-center justify-center text-[11px] cursor-pointer"><i class="fa-solid fa-minus"></i></button>
+                  <span class="text-xs font-bold w-4 text-center">${entry.qty}</span>
+                  <button onclick="adjustCartEntryQty(${idx}, 1)" class="w-6 h-6 rounded theme-accent-bg flex items-center justify-center text-[11px] cursor-pointer"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      document.getElementById("bill-subtotal").textContent = `₹${subtotal}`;
+      document.getElementById("bill-delivery").textContent = delivery === 0 ? "FREE" : `₹${delivery}`;
+      document.getElementById("bill-tax").textContent = `₹${tax}`;
+      document.getElementById("bill-grand-total").textContent = `₹${grandTotal}`;
+      document.getElementById("checkout-place-total").textContent = `₹${grandTotal}`;
+
+      const discRow = document.getElementById("bill-discount-row");
+      if (discount > 0) {
+        discRow.classList.remove("hidden");
+        document.getElementById("bill-discount-label").textContent = `Promo (${state.promoCode})`;
+        document.getElementById("bill-discount-val").textContent = `-₹${discount}`;
+      } else {
+        discRow.classList.add("hidden");
+      }
+    }
+
+    function adjustCartEntryQty(idx, delta) {
+      state.cart[idx].qty += delta;
+      if (state.cart[idx].qty <= 0) state.cart.splice(idx, 1);
+      updateAllCartDisplays();
+      if (state.currentView === "menu") renderRestaurantMenuItems();
+    }
+
+    function removeCartEntry(idx) {
+      state.cart.splice(idx, 1);
+      updateAllCartDisplays();
+      if (state.currentView === "menu") renderRestaurantMenuItems();
+    }
+
+    function applyCartPromo() {
+      const code = document.getElementById("cart-promo-input").value.trim().toUpperCase();
+      if (["PARCELO20", "FEAST150", "PRIVEFREE"].includes(code)) {
+        state.promoCode = code;
+        updateAllCartDisplays();
+        showToast(`Promo code ${code} applied!`);
+      } else {
+        showToast("Use PARCELO20, FEAST150, or PRIVEFREE");
+      }
+    }
+
+    function copyPromoCode(code) {
+      state.promoCode = code;
+      updateAllCartDisplays();
+      showToast(`Code ${code} copied & applied to your bag!`);
+    }
+
+    function openCartDrawer() {
+      backToCartStep();
+      updateAllCartDisplays();
+      document.getElementById("cart-drawer-backdrop").classList.remove("hidden");
+    }
+
+    function closeCartDrawer() {
+      document.getElementById("cart-drawer-backdrop").classList.add("hidden");
+    }
+
+    function goToCheckoutStep() {
+      document.getElementById("cart-drawer-title").textContent = "Checkout & Payment";
+      document.getElementById("cart-step-items").classList.add("hidden");
+      document.getElementById("cart-step-success").classList.add("hidden");
+      document.getElementById("cart-step-checkout").classList.remove("hidden");
+    }
+
+    function backToCartStep() {
+      document.getElementById("cart-drawer-title").textContent = "Your Culinary Bag";
+      document.getElementById("cart-step-checkout").classList.add("hidden");
+      document.getElementById("cart-step-success").classList.add("hidden");
+      document.getElementById("cart-step-items").classList.remove("hidden");
+    }
+
+    function toggleInlineNewAddress() {
+      document.getElementById("inline-new-address-box").classList.toggle("hidden");
+    }
+
+    function saveInlineAddress() {
+      const val = document.getElementById("new-addr-line").value.trim();
+      if (!val) return;
+      state.addresses.push({ label: "New Address", text: val });
+      const sel = document.getElementById("checkout-address-select");
+      const opt = document.createElement("option");
+      opt.textContent = `New Address — ${val}`;
+      sel.appendChild(opt);
+      sel.selectedIndex = sel.options.length - 1;
+      document.getElementById("inline-new-address-box").classList.add("hidden");
+      showToast("New delivery address saved");
+    }
+
+    function selectDeliveryNote(btn) {
+      document.querySelectorAll(".del-note-chip").forEach(c => {
+        c.classList.remove("theme-accent-bg");
+        c.classList.add("theme-bg-card", "border", "theme-border");
+      });
+      btn.classList.add("theme-accent-bg");
+      btn.classList.remove("theme-bg-card", "border", "theme-border");
+    }
+
+    function switchPaymentMethod(method) {
+      state.paymentMethod = method;
+      document.querySelectorAll(".pay-method-card").forEach(card => {
+        card.classList.toggle("border-2", card.dataset.pay === method);
+      });
+      ["upi", "card", "netbanking"].forEach(k => {
+        const sub = document.getElementById(`pay-sub-${k}`);
+        if (sub) sub.classList.toggle("hidden", k !== method);
+      });
+    }
+
+    function selectUpiProvider(btn, provider) {
+      state.upiProvider = provider;
+      document.querySelectorAll(".upi-sub-btn").forEach(b => {
+        b.classList.remove("theme-accent-bg");
+        b.classList.add("theme-bg-card", "border", "theme-border");
+      });
+      btn.classList.add("theme-accent-bg");
+      btn.classList.remove("theme-bg-card", "border", "theme-border");
+    }
+
+    function placeOrderNow() {
+      const { grandTotal } = calculateBill();
+      const totalItems = state.cart.reduce((s, i) => s + i.qty, 0);
+
+      // Save to Order History
+      state.orderHistory.unshift({
+        id: "PRC-9042",
+        date: "Today • Just Now",
+        restaurantId: state.activeRestaurantId,
+        restaurantName: RESTAURANTS.find(r => r.id === state.activeRestaurantId)?.name || "The Royal Saffron Room",
+        items: state.cart.map(c => {
+          const d = DISHES.find(x => x.id === c.dishId);
+          return { dishId: c.dishId, name: d.name, qty: c.qty, price: c.unitPrice };
+        }),
+        total: grandTotal,
+        status: "In Progress",
+        rated: null
+      });
+
+      document.getElementById("tracking-items-brief").textContent =
+        `${totalItems} ${totalItems === 1 ? "Item" : "Items"} • Paid ₹${grandTotal} (${state.paymentMethod.toUpperCase()})`;
+
+      document.getElementById("cart-drawer-title").textContent = "Order Confirmed";
+      document.getElementById("cart-step-checkout").classList.add("hidden");
+      document.getElementById("cart-step-success").classList.remove("hidden");
+    }
+
+    function launchLiveTrackingFromOrder() {
+      state.cart = [];
+      state.promoCode = null;
+      state.trackingStepIndex = 1; // Preparing
+      updateAllCartDisplays();
+      closeCartDrawer();
+      navigateTo("tracking");
+    }
+
+    // ------------------------------------------------------------------------
+    // 10. SPLIT-SCREEN LIVE ORDER TRACKING
+    // ------------------------------------------------------------------------
+    const TRACKING_STAGES = [
+      { label: "Confirmed", eta: "Arriving in 26 mins", pill: "Order Confirmed by Kitchen", coords: [220, 140] },
+      { label: "Preparing", eta: "Arriving in 22 mins", pill: "Chef Preparing Your Order", coords: [220, 260] },
+      { label: "Picked Up", eta: "Arriving in 18 mins", pill: "Out for Delivery • Picked Up", coords: [500, 260] },
+      { label: "Delivered", eta: "Delivered • Enjoy!", pill: "Delivered at Doorstep", coords: [780, 390] }
+    ];
+
+    function renderTrackingState() {
+      const stage = TRACKING_STAGES[state.trackingStepIndex];
+      document.getElementById("tracking-eta-heading").textContent = stage.eta;
+      document.getElementById("tracking-status-pill").textContent = stage.pill;
+
+      // Move Scooter SVG Marker
+      const scooter = document.getElementById("scooter-marker");
+      scooter.setAttribute("transform", `translate(${stage.coords[0]}, ${stage.coords[1]})`);
+
+      // Render 4-step horizontal progress bar
+      const barsEl = document.getElementById("tracking-steps-bars");
+      const labelsEl = document.getElementById("tracking-steps-labels");
+
+      barsEl.innerHTML = TRACKING_STAGES.map((_, idx) => `
+        <div class="h-2 rounded-full ${idx <= state.trackingStepIndex ? "theme-accent-bg" : "bg-neutral-500/25"}"></div>
+      `).join("");
+
+      labelsEl.innerHTML = TRACKING_STAGES.map((st, idx) => `
+        <span class="${idx <= state.trackingStepIndex ? "theme-accent-text" : "theme-text-secondary opacity-60"}">
+          ${st.label}
+        </span>
+      `).join("");
+    }
+
+    function advanceTrackingStep() {
+      state.trackingStepIndex = (state.trackingStepIndex + 1) % TRACKING_STAGES.length;
+      renderTrackingState();
+      showToast(`Status updated: ${TRACKING_STAGES[state.trackingStepIndex].label}`);
+    }
+
+    function cancelActiveOrder() {
+      showToast("Order #PRC-9042 cancellation requested with kitchen");
+      navigateTo("home");
+    }
+
+    function toggleTrackingSummary() {
+      const details = document.getElementById("tracking-summary-details");
+      const chev = document.getElementById("tracking-summary-chevron");
+      details.classList.toggle("hidden");
+      chev.classList.toggle("rotate-180");
+    }
+
+    // ------------------------------------------------------------------------
+    // 11. PARCELO AI ASSISTANT (History, Chat, Voice Waveform, Add to Cart)
+    // ------------------------------------------------------------------------
+    function openAiModal() {
+      renderAiSidebar();
+      renderAiChatMessages();
+      document.getElementById("ai-modal").classList.remove("hidden");
+    }
+
+    function closeAiModal() {
+      document.getElementById("ai-modal").classList.add("hidden");
+    }
+
+    function toggleMobileAiHistory() {
+      const sb = document.getElementById("ai-sidebar");
+      sb.classList.toggle("hidden");
+      sb.classList.toggle("absolute");
+      sb.classList.toggle("inset-y-0");
+      sb.classList.toggle("left-0");
+      sb.classList.toggle("z-20");
+    }
+
+    function renderAiSidebar() {
+      const list = document.getElementById("ai-history-list");
+      list.innerHTML = state.aiSessions.map(s => `
+        <button onclick="selectAiSession('${s.id}')"
+          class="w-full text-left p-3 rounded-2xl text-xs cursor-pointer ${s.id === state.activeAiSessionId ? "theme-accent-bg font-bold" : "theme-bg-card border theme-border hover:opacity-85"
+        }">
+          <div class="truncate font-bold">${s.title}</div>
+          <div class="text-[10px] opacity-75 mt-0.5">${s.time}</div>
+        </button>
+      `).join("");
+    }
+
+    function selectAiSession(id) {
+      state.activeAiSessionId = id;
+      const sess = state.aiSessions.find(s => s.id === id);
+      if (sess) document.getElementById("ai-session-heading").textContent = sess.title;
+      renderAiSidebar();
+      renderAiChatMessages();
+    }
+
+    function startNewAiSession() {
+      const id = "ai-" + Date.now();
+      state.aiSessions.unshift({
+        id,
+        title: "New Culinary Inquiry",
+        time: "Just now",
+        messages: [
+          {
+            sender: "ai",
+            text: "How may I assist your palate today? Ask for budget picks under ₹500, mood-based comfort food, or pure vegetarian restaurants.",
+            dishIds: []
+          }
+        ]
+      });
+      selectAiSession(id);
+    }
+
+    function clearCurrentAiChat() {
+      const sess = state.aiSessions.find(s => s.id === state.activeAiSessionId);
+      if (!sess) return;
+      sess.messages = [
+        { sender: "ai", text: "Chat cleared. Ready for your next culinary request!", dishIds: [] }
+      ];
+      renderAiChatMessages();
+      showToast("Conversation cleared");
+    }
+
+    function renderAiChatMessages() {
+      const sess = state.aiSessions.find(s => s.id === state.activeAiSessionId);
+      const feed = document.getElementById("ai-messages-feed");
+      if (!sess) return;
+
+      feed.innerHTML = sess.messages.map(m => {
+        if (m.sender === "user") {
+          return `
+            <div class="flex justify-end">
+              <div class="max-w-[80%] px-4 py-3 rounded-2xl rounded-br-sm theme-accent-bg text-xs sm:text-sm font-medium shadow-sm">
+                ${m.text}
+              </div>
+            </div>
+          `;
+        }
+
+        const dishCards = (m.dishIds || []).map(did => {
+          const d = DISHES.find(x => x.id === did);
+          if (!d) return "";
+          return `
+            <div class="mt-2.5 p-2.5 rounded-xl theme-bg-card border theme-border flex items-center justify-between gap-2.5">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <img src="${d.image}" alt="${d.name}" class="w-11 h-11 rounded-lg object-cover shrink-0" />
+                <div class="min-w-0">
+                  <p class="text-xs font-bold truncate">${d.name}</p>
+                  <span class="text-[11px] theme-accent-text font-bold">₹${d.price} • ${d.cuisine}</span>
+                </div>
+              </div>
+              <button onclick="aiQuickAddDish(${d.id})"
+                class="px-3 py-1.5 rounded-lg theme-accent-bg text-[11px] font-bold shrink-0 cursor-pointer">
+                + Add
+              </button>
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="flex items-start gap-2.5">
+            <div class="w-8 h-8 rounded-xl theme-accent-bg flex items-center justify-center text-xs shrink-0 mt-0.5">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div class="max-w-[85%] p-3.5 rounded-2xl rounded-tl-sm theme-bg-secondary border theme-border text-xs sm:text-sm leading-relaxed">
+              <p>${m.text}</p>
+              ${dishCards}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      feed.scrollTop = feed.scrollHeight;
+    }
+
+    function aiQuickAddDish(dishId) {
+      const d = DISHES.find(x => x.id === dishId);
+      state.cart.push({
+        cartKey: `${d.id}-ai-${Date.now()}`,
+        dishId: d.id,
+        qty: 1,
+        unitPrice: d.price,
+        customizationSummary: "Chef Recommended • Medium Spice"
+      });
+      updateAllCartDisplays();
+      showToast(`Parcelo AI added "${d.name}" to your bag!`);
+    }
+
+    function submitAiMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById("ai-user-input");
+      const val = input.value.trim();
+      if (!val) return;
+      input.value = "";
+      askParceloAi(val);
+    }
+
+    function askParceloAi(promptText) {
+      const sess = state.aiSessions.find(s => s.id === state.activeAiSessionId);
+      if (!sess) return;
+
+      if (sess.messages.length === 1) {
+        sess.title = promptText.slice(0, 26) + (promptText.length > 26 ? "..." : "");
+        document.getElementById("ai-session-heading").textContent = sess.title;
+      }
+
+      sess.messages.push({ sender: "user", text: promptText });
+      renderAiChatMessages();
+      renderAiSidebar();
+
+      const q = promptText.toLowerCase();
+      let reply = "Based on your taste profile, I suggest our signature Hyderabadi Dum Biryani paired with Beirut Royal Mezze:";
+      let dishIds = [101, 109];
+
+      if (q.includes("budget") || q.includes("500") || q.includes("under")) {
+        reply = "Here are gourmet chef-crafted selections comfortably under ₹500:";
+        dishIds = [101, 102, 104];
+      } else if (q.includes("mood") || q.includes("rainy") || q.includes("comfort")) {
+        reply = "For a cozy evening mood, nothing beats steaming Kyoto Spicy Miso Ramen alongside warm Galouti Kebabs:";
+        dishIds = [108, 103];
+      } else if (q.includes("veg") || q.includes("vegetarian")) {
+        reply = "Our top pure vegetarian delicacies crafted with artisanal ingredients:";
+        dishIds = [105, 106, 109];
+      } else if (q.includes("japanese") || q.includes("italian") || q.includes("restaurant")) {
+        reply = "I highly recommend Kuroki Omakase & Ramen Bar (4.9★) and Osteria Tartufo & Burrata (4.8★):";
+        dishIds = [107, 105];
+      }
+
+      setTimeout(() => {
+        sess.messages.push({ sender: "ai", text: reply, dishIds });
+        renderAiChatMessages();
+        renderAiSidebar();
+      }, 400);
+    }
+
+    function toggleAiVoiceChat() {
+      state.aiVoiceActive = !state.aiVoiceActive;
+      document.getElementById("ai-text-pane").classList.toggle("hidden", state.aiVoiceActive);
+      document.getElementById("ai-voice-pane").classList.toggle("hidden", !state.aiVoiceActive);
+      document.getElementById("ai-voice-toggle-btn").classList.toggle("theme-accent-bg", state.aiVoiceActive);
+    }
+
+    function simulateAiVoicePrompt(phrase) {
+      document.getElementById("ai-voice-transcript").textContent = `"${phrase}"`;
+      document.getElementById("ai-voice-subtext").textContent = "Curating bespoke dishes & adding cards to your session...";
+      setTimeout(() => {
+        askParceloAi(phrase);
+        if (state.aiVoiceActive) toggleAiVoiceChat();
+      }, 950);
+    }
+
+    // ------------------------------------------------------------------------
+    // 12. USER PROFILE, FAVORITES, REORDER & REVIEW MODAL
+    // ------------------------------------------------------------------------
+    function renderProfileScreen() {
+      // Order History
+      const historyEl = document.getElementById("order-history-list");
+      historyEl.innerHTML = state.orderHistory.map((ord, idx) => `
+        <div class="rounded-3xl theme-bg-card border theme-border p-5 theme-shadow space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b theme-border">
+            <div>
+              <span class="text-[11px] font-bold theme-accent-text uppercase tracking-wider">${ord.id} • ${ord.date}</span>
+              <h4 class="font-serif-brand text-2xl font-bold">${ord.restaurantName}</h4>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold ${ord.status === "Delivered" ? "bg-emerald-500/15 text-emerald-500" : "theme-accent-bg"
+        }">
+              ${ord.status}
+            </span>
+          </div>
+
+          <div class="text-xs space-y-1">
+            ${ord.items.map(i => `<div class="flex justify-between"><span>${i.qty}× ${i.name}</span><span class="font-semibold">₹${i.price * i.qty}</span></div>`).join("")}
+          </div>
+
+          <div class="pt-3 border-t theme-border flex flex-wrap items-center justify-between gap-3">
+            <span class="text-sm font-bold">Total Paid: <span class="theme-accent-text">₹${ord.total}</span></span>
+            <div class="flex items-center gap-2">
+              <button onclick="openReviewModal(${idx})"
+                class="px-3.5 py-2 rounded-xl theme-bg-secondary border theme-border text-xs font-bold hover:opacity-85 cursor-pointer">
+                <i class="fa-solid fa-star text-amber-400 mr-1"></i>
+                ${ord.rated ? `Rated ${ord.rated}.0 ★` : "Rate & Review"}
+              </button>
+              <button onclick="reorderPastOrder(${idx})"
+                class="px-4 py-2 rounded-xl theme-accent-bg text-xs font-bold cursor-pointer">
+                <i class="fa-solid fa-rotate-right mr-1"></i> Reorder
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      // Saved Addresses
+      const addrList = document.getElementById("profile-addresses-list");
+      addrList.innerHTML = state.addresses.map(a => `
+        <div class="p-4 rounded-2xl theme-bg-secondary border theme-border">
+          <span class="text-xs font-bold theme-accent-text block mb-1"><i class="fa-solid fa-location-dot mr-1"></i> ${a.label}</span>
+          <p class="text-xs theme-text-secondary">${a.text}</p>
+        </div>
+      `).join("");
+
+      // Favorites
+      const favGrid = document.getElementById("profile-favorites-grid");
+      const favRests = RESTAURANTS.filter(r => state.favoriteRestaurantIds.includes(r.id));
+      favGrid.innerHTML = favRests.map(r => `
+        <div onclick="openRestaurantMenu(${r.id})" class="p-4 rounded-2xl theme-bg-secondary border theme-border flex items-center gap-3 cursor-pointer">
+          <img src="${r.cover}" alt="${r.name}" class="w-16 h-16 rounded-xl object-cover" />
+          <div>
+            <h4 class="text-sm font-bold">${r.name}</h4>
+            <span class="text-xs theme-text-secondary block">${r.cuisines.join(" • ")}</span>
+            <span class="text-xs font-bold theme-accent-text">${r.rating} ★ • ${r.deliveryTime}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function switchProfileTab(tabName) {
+      document.querySelectorAll(".profile-panel").forEach(p => p.classList.add("hidden"));
+      document.getElementById(`profile-panel-${tabName}`).classList.remove("hidden");
+
+      document.querySelectorAll(".profile-tab-btn").forEach(btn => {
+        if (btn.dataset.ptab === tabName) {
+          btn.classList.add("theme-accent-bg");
+        } else {
+          btn.classList.remove("theme-accent-bg");
+        }
+      });
+    }
+
+    function saveProfileChanges(e) {
+      e.preventDefault();
+      const newName = document.getElementById("edit-profile-name").value.trim() || "Aarav Mehta";
+      const newEmail = document.getElementById("edit-profile-email").value.trim();
+      document.getElementById("profile-card-name").textContent = newName;
+      document.getElementById("profile-card-email").textContent = newEmail;
+      document.getElementById("header-user-name").textContent = newName.split(" ")[0];
+      document.getElementById("home-greeting-title").innerHTML = `Good Evening, <span class="italic">${newName.split(" ")[0]}</span>`;
+      showToast("Profile details updated");
+    }
+
+    function reorderPastOrder(orderIdx) {
+      const ord = state.orderHistory[orderIdx];
+      if (!ord) return;
+      ord.items.forEach(item => {
+        state.cart.push({
+          cartKey: `${item.dishId}-reorder-${Date.now()}`,
+          dishId: item.dishId,
+          qty: item.qty,
+          unitPrice: item.price,
+          customizationSummary: "Reordered Favorite • Medium Spice"
+        });
+      });
+      updateAllCartDisplays();
+      openCartDrawer();
+      showToast(`Items from ${ord.id} added to your bag!`);
+    }
+
+    function toggleFavoriteRestaurant(id) {
+      const idx = state.favoriteRestaurantIds.indexOf(id);
+      if (idx > -1) state.favoriteRestaurantIds.splice(idx, 1);
+      else state.favoriteRestaurantIds.push(id);
+      updateMenuFavIcon();
+      renderHomeDashboard();
+      if (state.currentView === "restaurants") renderRestaurantListing();
+      showToast(idx > -1 ? "Removed from favorites" : "Saved to Favorite Restaurants");
+    }
+
+    function toggleFavoriteDish(id) {
+      const idx = state.favoriteDishIds.indexOf(id);
+      if (idx > -1) state.favoriteDishIds.splice(idx, 1);
+      else state.favoriteDishIds.push(id);
+      renderHomeDishes(document.getElementById("home-search-input").value.trim());
+      showToast(idx > -1 ? "Dish removed from favorites" : "Dish saved to favorites");
+    }
+
+    // Review Modal
+    let reviewingOrderIdx = null;
+    let selectedReviewStars = 5;
+
+    function openReviewModal(idx) {
+      reviewingOrderIdx = idx;
+      const ord = state.orderHistory[idx];
+      document.getElementById("review-modal-rest").textContent = `Rate ${ord.restaurantName}`;
+      setReviewStars(5);
+      document.getElementById("review-modal").classList.remove("hidden");
+    }
+
+    function closeReviewModal() {
+      document.getElementById("review-modal").classList.add("hidden");
+    }
+
+    function setReviewStars(count) {
+      selectedReviewStars = count;
+      document.querySelectorAll(".review-star").forEach((star, i) => {
+        star.classList.toggle("text-amber-400", i < count);
+        star.classList.toggle("opacity-30", i >= count);
+      });
+    }
+
+    function submitOrderReview() {
+      if (reviewingOrderIdx !== null) {
+        state.orderHistory[reviewingOrderIdx].rated = selectedReviewStars;
+        renderProfileScreen();
+      }
+      closeReviewModal();
+      showToast(`Thank you! ${selectedReviewStars}★ review published.`);
+    }
+
+    // ------------------------------------------------------------------------
+    // 13. AUTHENTICATION MODAL & LOGOUT
+    // ------------------------------------------------------------------------
+    function openAuthModal() {
+      document.getElementById("auth-modal").classList.remove("hidden");
+    }
+    function closeAuthModal() {
+      document.getElementById("auth-modal").classList.add("hidden");
+    }
+    function toggleAuthMethod(type) {
+      const isEmail = type === "email";
+      document.getElementById("auth-form-email").classList.toggle("hidden", !isEmail);
+      document.getElementById("auth-form-otp").classList.toggle("hidden", isEmail);
+      document.getElementById("auth-tab-email").classList.toggle("theme-accent-bg", isEmail);
+      document.getElementById("auth-tab-otp").classList.toggle("theme-accent-bg", !isEmail);
+    }
+    function submitAuthLogin(e, method) {
+      e.preventDefault();
+      const name = document.getElementById("auth-input-name").value.trim() || "Aarav Mehta";
+      document.getElementById("header-user-name").textContent = name.split(" ")[0];
+      document.getElementById("auth-status-pill").textContent = `Signed in via ${method}`;
+      closeAuthModal();
+      showToast(`Welcome to Parcelo Privé, ${name}!`);
+    }
+    function socialLogin(provider) {
+      document.getElementById("auth-status-pill").textContent = `Signed in via ${provider}`;
+      closeAuthModal();
+      showToast(`Authenticated with ${provider}`);
+    }
+    function handleLogoutAction() {
+      document.getElementById("auth-status-pill").textContent = "Guest Mode • Sign In";
+      showToast("Signed out of Parcelo Privé");
+      openAuthModal();
+    }
+
+    // ------------------------------------------------------------------------
+    // 14. TOAST UTILITY & BOOTSTRAP
+    // ------------------------------------------------------------------------
+    function showToast(msg) {
+      const container = document.getElementById("toast-container");
+      const el = document.createElement("div");
+      el.className = "pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-2xl theme-bg-card border theme-border theme-shadow text-xs font-bold transition-all duration-300";
+      el.innerHTML = `<i class="fa-solid fa-crown theme-accent-text"></i><span>${msg}</span>`;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-8px)";
+        setTimeout(() => el.remove(), 300);
+      }, 2800);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setTheme("midnight");
+      renderHomeDashboard();
+      renderRestaurantListing();
+      updateAllCartDisplays();
+      renderTrackingState();
+      navigateTo("home");
+    });
+  </script>
+</body>
+
+</html>

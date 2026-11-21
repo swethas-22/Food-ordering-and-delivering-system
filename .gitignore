@@ -1,0 +1,53 @@
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+.npm
+dist/
+frontend/dist/
+.env.local
+.env.*.local
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+build/
+develop-eggs/
+eggs/
+.eggs/
+parts/
+var/
+sdist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Database (uncomment if you want to exclude local db; migrations & seed_data.py recreate it)
+db.sqlite3
+backend/db.sqlite3
+*.sqlite3
+
+# Environment Variables & Secrets
+.env
+backend/.env
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
